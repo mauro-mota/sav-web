@@ -11,13 +11,15 @@ Site estático (HTML, CSS e JS puros), sem build. A raiz deste repositório é e
 - `robots.txt`, `sitemap.xml` — atualize o `<lastmod>` do sitemap quando o conteúdo mudar.
 - `_headers` — cabeçalhos do Cloudflare Pages: segurança em tudo e cache de 1 semana em `/assets/*`. Como os assets mantêm o nome ao serem trocados, visitantes antigos podem ver a versão anterior por até uma semana; para forçar, mude o nome do arquivo ou acrescente `?v=2` na referência.
 - `_redirects` — manda para a home os arquivos internos que não devem abrir no site (`CLAUDE.md`, `publicar.command`, `.gitignore`). Ao criar outro arquivo interno na raiz, acrescente-o aqui.
-- `publicar.command` — script (Mac) que faz o mesmo fluxo do comando "Publica" com duplo clique. Não altere sem pedido.
+- `publicar.command` — script (Mac) que faz o mesmo fluxo do comando "Publica" com duplo clique. Como não consegue mesclar textos, mantém o `CLAUDE.md` daqui e avisa se o do zip vier diferente. Não altere sem pedido.
 
 ## Comando "Publica"
-As edições de design chegam como um `site.zip` em `~/Downloads`, com o conteúdo correspondente à raiz deste repositório (às vezes dentro de uma pasta `site/`). Ao receber "Publica" (com ou sem caminho):
+As edições de design são feitas no Claude Design, que trabalha numa cópia própria do site e entrega um `site.zip` em `~/Downloads`, com o conteúdo correspondente à raiz deste repositório (às vezes dentro de uma pasta `site/`). Este repositório é a fonte da verdade: arquivos que só existem aqui (`_headers`, `_redirects`, `.gitignore`, `publicar.command`) nunca vêm no zip e devem ser preservados. Ao receber "Publica" (com ou sem caminho):
 1. Se não vier caminho, use o `.zip` mais recente de `~/Downloads` que contenha um `index.html`. Diga qual arquivo escolheu.
 2. `git pull --ff-only` antes de tudo, para partir da versão da nuvem.
-3. Extraia e copie o conteúdo por cima da raiz (se o zip tiver uma pasta `site/`, use o conteúdo dela). Sobrescreva o que veio; nunca apague arquivos ausentes no zip sem confirmar (ex.: vídeos, este arquivo).
+3. Extraia e copie o conteúdo por cima da raiz (se o zip tiver uma pasta `site/`, use o conteúdo dela). Sobrescreva o que veio; nunca apague arquivos ausentes no zip sem confirmar (ex.: vídeos, este arquivo). Exceções:
+   - `CLAUDE.md`: não sobrescreva. Se o do zip for diferente, incorpore ao daqui só as novidades reais do Design (ex.: nota nova sobre um asset ou seção) e mantenha tudo o que existe aqui. Diga o que incorporou.
+   - SVGs: remova o bloco `<metadata>…</metadata>` (selo C2PA que o Claude adiciona aos arquivos que entrega) e o atributo `xmlns:c2pa`. O desenho não muda.
 4. Mostre `git diff --stat` e resuma em português, em poucas linhas, o que mudou.
 5. Pergunte: "Mensagem do commit? (Enter = usar a minha sugestão: <sugestão curta em pt-BR>)". Use o que o usuário escrever; se ele só confirmar, use a sugestão.
 6. `git add -A`, commit com essa mensagem e `git push origin main`. Confirme com uma linha: "No ar em cerca de um minuto."
@@ -29,9 +31,6 @@ As edições de design chegam como um `site.zip` em `~/Downloads`, com o conteú
 - Não renomear classes e ids usados por `script.js`: `.ze-tech`, `.cases-track`, `.case`, `.menu-toggle`, `.menu`, `[data-whatsapp]`, `.mobile-contact`, `#year`.
 - Não recomprimir ou trocar assets sem pedido.
 - Textos em pt-BR, sem emoji.
-
-## Pendências
-- Cases: 6 placeholders `.case-placeholder` em `index.html` aguardam os embeds do VTurb. Ao colar, substitua o `<div class="case-placeholder">…</div>` pelo embed, dentro de `.case-media` (o card já tem `aspect-ratio: 9/16`). O carrossel detecta vídeos tocando com som, inclusive em shadow DOM, e pausa sozinho.
 
 ## Pendências
 - Cases: 6 placeholders `.case-placeholder` em `index.html` aguardam os embeds do VTurb. Ao colar, substitua o `<div class="case-placeholder">…</div>` pelo embed, dentro de `.case-media` (o card já tem `aspect-ratio: 9/16`). O carrossel detecta vídeos tocando com som, inclusive em shadow DOM, e pausa sozinho.

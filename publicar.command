@@ -25,7 +25,16 @@ if [ ! -f "$SRC/index.html" ]; then
   [ -n "$inner" ] && SRC="$(dirname "$inner")"
 fi
 [ -f "$SRC/index.html" ] || { echo "O zip não tem index.html na raiz nem numa pasta logo abaixo."; exit 1; }
+# CLAUDE.md: este repositório é a fonte da verdade; o do zip (cópia do Claude Design) não sobrescreve.
+if [ -f "$SRC/CLAUDE.md" ]; then
+  if ! cmp -s "$SRC/CLAUDE.md" CLAUDE.md; then
+    echo "Aviso: o CLAUDE.md do zip é diferente do daqui. Mantive o daqui; para incorporar novidades, use \"Publica\" no Claude Code."
+  fi
+  rm -f "$SRC/CLAUDE.md"
+fi
 cp -R "$SRC"/. ./
+# SVGs: remove o selo C2PA que o Claude adiciona aos arquivos que entrega (o desenho não muda).
+find . -name '*.svg' -not -path './.git/*' -exec perl -0pi -e 's|<metadata>.*?</metadata>||s; s| xmlns:c2pa="http://c2pa.org/manifest"||' {} +
 rm -f .DS_Store; grep -qx '.DS_Store' .gitignore 2>/dev/null || echo '.DS_Store' >> .gitignore
 git add -A
 if git diff --cached --quiet; then echo "Nada mudou — nada para publicar."; rm -f "$ZIP"; exit 0; fi
