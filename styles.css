@@ -1,4 +1,4 @@
-/* Savannah Hub — sistema mobile-first.
+/* Savannah Hub — sistema focado em experiência mobile.
    3 níveis de espaço: entre seções (--sec) › entre blocos (--gap-head) › dentro dos cards (--pad-card).
    Tipografia fluida (clamp) para escalar sem saltos. */
 :root{color-scheme:dark;
