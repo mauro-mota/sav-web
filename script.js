@@ -118,15 +118,35 @@
     new IntersectionObserver((entries) => { onScreen = entries[0].isIntersecting; if (onScreen) start(); }, { threshold: 0 }).observe(track);
   }
 
+  // Zé no balcão: AVIF animado (cerca de metade do peso) onde é confiável. Safari e iOS seguem no WebP até o WebKit corrigir o AVIF animado (bug 322274).
+  // Os caminhos vêm do próprio <picture> (troca .webp por .avif); a imagem é lazy, então a escolha acontece antes de qualquer download.
+  const mascotPicture = document.querySelector(".contact-mascot picture");
+  const ua = navigator.userAgent;
+  const webkitOnly = /iPhone|iPad|iPod/.test(ua) || (/Safari\//.test(ua) && !/Chrome\/|Chromium\/|Edg\/|OPR\/|Firefox\//.test(ua));
+  if (mascotPicture && !webkitOnly) {
+    const animated = [...mascotPicture.querySelectorAll("source, img")].filter((el) => !(el.getAttribute("media") || "").includes("reduced-motion"));
+    animated.forEach((el) => {
+      const source = document.createElement("source");
+      const media = el.getAttribute("media");
+      if (media) source.media = media;
+      source.type = "image/avif";
+      source.srcset = (el.getAttribute("srcset") || el.getAttribute("src")).replace(/\.webp$/, ".avif");
+      source.setAttribute("width", el.getAttribute("width")); source.setAttribute("height", el.getAttribute("height"));
+      mascotPicture.insertBefore(source, animated[0]);
+    });
+  }
+
   // Exibe o atalho móvel apenas quando as principais ações estão fora da tela.
   const mobileContact = document.querySelector(".mobile-contact");
   const heroAction = document.querySelector(".hero [data-whatsapp]");
   const contactAction = document.querySelector(".contact [data-whatsapp]");
   const footer = document.querySelector(".footer");
+  const mascot = document.querySelector(".contact-mascot");
   if (!mobileContact || !heroAction || !contactAction || !footer || !("IntersectionObserver" in window)) return;
 
   const mobile = window.matchMedia("(max-width: 599px)");
   const visible = new Map([[heroAction, true], [contactAction, false], [footer, false]]);
+  if (mascot) visible.set(mascot, false);
   const sync = () => {
     const show = mobile.matches && ![...visible.values()].some(Boolean);
     mobileContact.classList.toggle("is-visible", show);
@@ -137,7 +157,7 @@
     entries.forEach((entry) => visible.set(entry.target, entry.isIntersecting));
     sync();
   }, { threshold: 0 });
-  [heroAction, contactAction, footer].forEach((element) => observer.observe(element));
+  [...visible.keys()].forEach((element) => observer.observe(element));
   if (mobile.addEventListener) mobile.addEventListener("change", sync);
   else mobile.addListener(sync);
 })();

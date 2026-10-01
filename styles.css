@@ -163,24 +163,18 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
 .numbers-mascot{justify-self:center;width:min(78%,340px)}
 .numbers-mascot img{display:block;width:100%;height:auto;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45))}
 
-/* Contato — painel com borda e paisagem abstrata */
-.contact{padding-block:var(--sec) calc(var(--sec) - 24px)}
-.contact-panel{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;border:1px solid #374739;border-radius:20px;background:#07100c}
-.contact-landscape{position:absolute;z-index:-3;inset:0;pointer-events:none}
-.contact-landscape img{width:100%;height:100%;object-fit:cover;object-position:65% bottom}
-.contact-shade{position:absolute;z-index:-2;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,17,12,.97) 0%,rgba(9,19,11,.92) 48%,rgba(10,19,12,.6) 76%,rgba(10,19,12,.18) 100%)}
-.contact-copy{position:relative;width:100%;max-width:620px;padding:44px 28px 48px;text-align:left}
-.contact .eyebrow{margin-bottom:20px}
-.contact h2{font-size:30px;font-weight:800;line-height:1.1;letter-spacing:-.028em}
-.contact h2 span{color:#b6c9bd}
-.contact-intro{font-size:17px;line-height:1.6;color:var(--t74);margin-top:22px;max-width:34ch}
-.contact .button-primary{margin-top:32px;width:100%;min-height:56px;font-size:16.5px;background:var(--mint);border-color:var(--mint);box-shadow:0 12px 34px rgba(61,216,152,.28)}
+/* Contato — convite centrado sobre o fundo do site; logo abaixo o Zé espia por cima do balcão, e o balcão vira o rodapé */
+.contact{border-top:1px solid var(--line);padding-top:var(--sec)}
+.contact-copy{display:flex;flex-direction:column;align-items:center;max-width:800px;text-align:center}
+.contact .eyebrow{justify-content:center;margin-bottom:18px}
+.contact-intro{font-size:17px;line-height:1.6;color:var(--t74);margin-top:18px;max-width:34ch}
+.contact .button-primary{margin-top:30px;width:100%;min-height:56px;font-size:16.5px;background:var(--mint);border-color:var(--mint);box-shadow:0 12px 34px rgba(61,216,152,.28)}
 .contact .button-primary:hover{background:#6ee3af;border-color:#6ee3af}
+.contact-mascot{margin-top:28px;line-height:0}
+.contact-mascot picture,.contact-mascot img{display:block;width:100%;height:auto}
 
-/* Rodapé — o Zé espia por cima do balcão (imagem de ponta a ponta, fundo escuro atrás dele) sobre o bege claro do rodapé */
+/* Rodapé — começa onde o balcão do Zé termina */
 .footer{background:#F1EFEF;color:var(--ink);padding:0 var(--gutter) 40px}
-.footer-mascot{margin:0 calc(-1 * var(--gutter));background:var(--bg);padding-top:24px;line-height:0}
-.footer-mascot picture,.footer-mascot img{display:block;width:100%;height:auto}
 .footer-top{max-width:1240px;margin-inline:auto;padding-top:30px;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
 .footer-brand{width:136px}
 .footer p{font-size:14px;line-height:1.6;color:rgba(4,19,12,.62);margin-top:14px}
@@ -250,14 +244,10 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
   .case{width:300px;border-radius:22px}
   .stat{padding:34px 24px;border-radius:22px}
   .stat-label{font-size:14.5px}
-  .contact-panel{min-height:480px;border-radius:24px}
-  .contact-landscape img{object-position:67% center}
-  .contact-shade{background:linear-gradient(90deg,rgba(7,16,12,.96) 0%,rgba(7,17,12,.8) 46%,rgba(9,23,12,.04) 100%)}
-  .contact-copy{padding:64px 56px 68px;max-width:760px}
   .contact-intro{font-size:18px}
   .contact .button-primary{margin-top:36px}
+  .contact-mascot{margin-top:36px}
   .footer{padding:0 var(--gutter) 48px}
-  .footer-mascot{padding-top:40px}
   .footer-top{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px}
   .footer-brand{width:156px}
   .footer-bottom{margin-top:48px}
@@ -285,8 +275,7 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
   .numbers-mascot{max-width:480px}
   .cases-track{gap:24px}
   .case{width:320px}
-  .contact-panel{min-height:540px}
-  .contact-copy{padding:80px 72px;max-width:780px}
+  .contact-mascot{margin-top:44px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
