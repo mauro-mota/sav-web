@@ -13,7 +13,8 @@ pick() {
 }
 ZIP="${1:-$(pick)}"
 [ -n "$ZIP" ] && [ -f "$ZIP" ] || { echo "Nenhum zip com index.html em ~/Downloads. Uso: ./publicar.command caminho/do/site.zip"; exit 1; }
-MSG="${2:-Atualiza site ($(date '+%d/%m/%Y %H:%M'))}"
+MSG="${2:-}"
+SUGESTAO="Atualiza site ($(date '+%d/%m/%Y %H:%M'))"
 echo "Zip: $ZIP"
 git pull --ff-only --quiet 2>/dev/null || echo "Aviso: não consegui puxar a nuvem; seguindo com o que está local."
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
@@ -29,7 +30,8 @@ rm -f .DS_Store; grep -qx '.DS_Store' .gitignore 2>/dev/null || echo '.DS_Store'
 git add -A
 if git diff --cached --quiet; then echo "Nada mudou — nada para publicar."; rm -f "$ZIP"; exit 0; fi
 echo; git --no-pager diff --cached --stat; echo
-if [ -t 0 ]; then read -r -p "Publicar? [Enter = sim / Ctrl+C = não] "; fi
+if [ -z "$MSG" ] && [ -t 0 ]; then read -r -p "Mensagem do commit? (Enter = $SUGESTAO / Ctrl+C = cancelar) " MSG; fi
+MSG="${MSG:-$SUGESTAO}"
 git commit -q -m "$MSG"
 git push
 rm -f "$ZIP"

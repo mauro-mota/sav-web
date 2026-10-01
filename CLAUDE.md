@@ -9,6 +9,8 @@ Site estático (HTML, CSS e JS puros), sem build. A raiz deste repositório é e
 - `config.js` — número e mensagens de WhatsApp (`window.SAVANNAH_CONFIG`). As mensagens começam com "Opa!".
 - `assets/` — imagens já otimizadas (WebP); posters e vídeos do hero em `assets/ze-tech/`. Zé no balcão (seção de contato) em três formatos: `ze-balcao-{desktop,mobile}-animado.avif` (preferido, inserido via `script.js` fora de Safari/iOS), `-animado.webp` (fallback) e `ze-balcao-{desktop,mobile}.webp` (estático, para quem reduz movimento). Ao trocar a animação, substitua os seis arquivos mantendo nomes e dimensões (1440×600 e 720×600).
 - `robots.txt`, `sitemap.xml` — atualize o `<lastmod>` do sitemap quando o conteúdo mudar.
+- `_headers` — cabeçalhos do Cloudflare Pages: segurança em tudo e cache de 1 semana em `/assets/*`. Como os assets mantêm o nome ao serem trocados, visitantes antigos podem ver a versão anterior por até uma semana; para forçar, mude o nome do arquivo ou acrescente `?v=2` na referência.
+- `publicar.command` — script (Mac) que faz o mesmo fluxo do comando "Publica" com duplo clique. Não altere sem pedido.
 
 ## Comando "Publica"
 As edições de design chegam como um `site.zip` em `~/Downloads`, com o conteúdo correspondente à raiz deste repositório (às vezes dentro de uma pasta `site/`). Ao receber "Publica" (com ou sem caminho):
@@ -26,6 +28,9 @@ As edições de design chegam como um `site.zip` em `~/Downloads`, com o conteú
 - Não renomear classes e ids usados por `script.js`: `.ze-tech`, `.cases-track`, `.case`, `.menu-toggle`, `.menu`, `[data-whatsapp]`, `.mobile-contact`, `#year`.
 - Não recomprimir ou trocar assets sem pedido.
 - Textos em pt-BR, sem emoji.
+
+## Pendências
+- Cases: 6 placeholders `.case-placeholder` em `index.html` aguardam os embeds do VTurb. Ao colar, substitua o `<div class="case-placeholder">…</div>` pelo embed, dentro de `.case-media` (o card já tem `aspect-ratio: 9/16`). O carrossel detecta vídeos tocando com som, inclusive em shadow DOM, e pausa sozinho.
 
 ## Pendências
 - Cases: 6 placeholders `.case-placeholder` em `index.html` aguardam os embeds do VTurb. Ao colar, substitua o `<div class="case-placeholder">…</div>` pelo embed, dentro de `.case-media` (o card já tem `aspect-ratio: 9/16`). O carrossel detecta vídeos tocando com som, inclusive em shadow DOM, e pausa sozinho.
