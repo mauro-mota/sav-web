@@ -10,6 +10,7 @@ Site estático (HTML, CSS e JS puros), sem build. A raiz deste repositório é e
 - `assets/` — imagens já otimizadas (WebP); posters e vídeos do hero em `assets/ze-tech/`. Zé no balcão (seção de contato) em três formatos: `ze-balcao-{desktop,mobile}-animado.avif` (preferido, inserido via `script.js` fora de Safari/iOS), `-animado.webp` (fallback) e `ze-balcao-{desktop,mobile}.webp` (estático, para quem reduz movimento). Ao trocar a animação, substitua os seis arquivos mantendo nomes e dimensões (1440×600 e 720×600).
 - `robots.txt`, `sitemap.xml` — atualize o `<lastmod>` do sitemap quando o conteúdo mudar.
 - `_headers` — cabeçalhos do Cloudflare Pages: segurança em tudo e cache de 1 semana em `/assets/*`. Como os assets mantêm o nome ao serem trocados, visitantes antigos podem ver a versão anterior por até uma semana; para forçar, mude o nome do arquivo ou acrescente `?v=2` na referência.
+- `_redirects` — manda para a home os arquivos internos que não devem abrir no site (`CLAUDE.md`, `publicar.command`, `.gitignore`). Ao criar outro arquivo interno na raiz, acrescente-o aqui.
 - `publicar.command` — script (Mac) que faz o mesmo fluxo do comando "Publica" com duplo clique. Não altere sem pedido.
 
 ## Comando "Publica"
