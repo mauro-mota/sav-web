@@ -138,21 +138,6 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
 .process-list h3{font-size:18.5px;position:relative;letter-spacing:-.018em}
 .process-list p{font-size:15px;line-height:1.6;color:var(--t72);margin-top:8px;position:relative;max-width:40ch}
 
-/* Cases & clientes — carrossel de reels (VTurb) */
-.cases-viewport{position:relative}
-.cases-viewport:before,.cases-viewport:after{content:"";position:absolute;top:0;bottom:0;z-index:1;width:28px;pointer-events:none}
-.cases-viewport:before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
-.cases-viewport:after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
-.cases-track{list-style:none;margin:0;padding:6px var(--gutter) 14px;display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
-.cases-track::-webkit-scrollbar{display:none}
-.cases-track:active{cursor:grabbing}
-.cases-track.is-dragging{-webkit-user-select:none;user-select:none}
-.case{position:relative;flex:none;width:min(78vw,300px);aspect-ratio:9/16;overflow:hidden;border-radius:20px;background:var(--card);border:1px solid var(--border);transition:border-color .3s,transform .3s}
-.case:hover{border-color:#476553;transform:translateY(-4px)}
-.case-media{position:absolute;inset:0;background:#07100c}
-.case-media iframe,.case-media video{display:block;width:100%;height:100%;border:0}
-.case-placeholder{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;font:600 11px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--green);background:repeating-linear-gradient(135deg,#0e1a12 0 9px,#0b140d 9px 18px)}
-
 /* Resultados — números em grade 2×2 + mascote */
 .numbers-layout{display:grid;grid-template-columns:1fr;gap:36px;align-items:end}
 .stats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -239,9 +224,6 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
   .step-card{border-radius:20px;padding:30px 32px 32px}
   .process-list h3{font-size:20px}
   .process-list p{font-size:15.5px}
-  .cases-viewport:before,.cases-viewport:after{width:72px}
-  .cases-track{gap:20px;padding-bottom:18px}
-  .case{width:300px;border-radius:22px}
   .stat{padding:34px 24px;border-radius:22px}
   .stat-label{font-size:14.5px}
   .contact-intro{font-size:18px}
@@ -273,13 +255,11 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
   .stats{gap:20px}
   .numbers-layout{gap:72px}
   .numbers-mascot{max-width:480px}
-  .cases-track{gap:24px}
-  .case{width:320px}
   .contact-mascot{margin-top:44px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*:before,*:after{animation:none!important;transition:none!important}
-  .service:hover,.stat:hover,.case:hover,.process-list li:hover .step-card,.button:hover,.button:hover .icon,.service-link:hover .icon,.back-to-top:hover .icon{transform:none}
+  .service:hover,.stat:hover,.process-list li:hover .step-card,.button:hover,.button:hover .icon,.service-link:hover .icon,.back-to-top:hover .icon{transform:none}
   .step-spark{display:none}
 }

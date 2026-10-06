@@ -1,11 +1,14 @@
 # Savannah Hub — savannah.ag
 
-Site estático (HTML, CSS e JS puros), sem build. A raiz deste repositório é exatamente o que o Cloudflare Pages publica; todo push em `main` vai ao ar em cerca de um minuto.
+Site estático (HTML, CSS e JS puros), sem build. A raiz deste repositório é exatamente o que o Cloudflare Pages publica; todo push na branch de produção vai ao ar em cerca de um minuto.
+
+## Branch `improv`
+Esta branch é a `main` sem a seção "Nossos cases" (seção, link do menu, CSS do carrossel e JS do carrossel removidos; Resultados passou a ser a seção 03). Fica no ar enquanto não há cases suficientes. A `main` continua intacta, com a seção e os placeholders; quando houver cases, volte para a `main`, cole os embeds lá e publique a `main`. Mudanças de design que valem para as duas branches devem ir na `main` e depois ser mescladas aqui (`git merge main`), resolvendo o conflito em favor da versão sem cases.
 
 ## Estrutura
-- `index.html` — página única: hero, soluções, processo, cases, resultados, contato, rodapé.
+- `index.html` — página única: hero, soluções, processo, resultados, contato, rodapé.
 - `styles.css` — mobile-first, variáveis em `:root`, breakpoints em 480/600/640/700/900/1024px. Sem frameworks.
-- `script.js` — menu, vídeo do hero (troca 1:1 / 16:9 e só toca visível), carrossel de cases, atalho fixo de WhatsApp.
+- `script.js` — menu, vídeo do hero (troca 1:1 / 16:9 e só toca visível), atalho fixo de WhatsApp.
 - `config.js` — número e mensagens de WhatsApp (`window.SAVANNAH_CONFIG`). As mensagens começam com "Opa!".
 - `assets/` — imagens já otimizadas (WebP); posters e vídeos do hero em `assets/ze-tech/`. Zé no balcão (seção de contato) em três formatos: `ze-balcao-{desktop,mobile}-animado.avif` (preferido, inserido via `script.js` fora de Safari/iOS), `-animado.webp` (fallback) e `ze-balcao-{desktop,mobile}.webp` (estático, para quem reduz movimento). Ao trocar a animação, substitua os seis arquivos mantendo nomes e dimensões (1440×600 e 720×600).
 - `robots.txt`, `sitemap.xml` — atualize o `<lastmod>` do sitemap quando o conteúdo mudar.
@@ -22,15 +25,15 @@ As edições de design são feitas no Claude Design, que trabalha numa cópia pr
    - SVGs: remova o bloco `<metadata>…</metadata>` (selo C2PA que o Claude adiciona aos arquivos que entrega) e o atributo `xmlns:c2pa`. O desenho não muda.
 4. Mostre `git diff --stat` e resuma em português, em poucas linhas, o que mudou.
 5. Pergunte: "Mensagem do commit? (Enter = usar a minha sugestão: <sugestão curta em pt-BR>)". Use o que o usuário escrever; se ele só confirmar, use a sugestão.
-6. `git add -A`, commit com essa mensagem e `git push origin main`. Confirme com uma linha: "No ar em cerca de um minuto."
+6. `git add -A`, commit com essa mensagem e `git push origin <branch atual>`. Confirme com uma linha: "No ar em cerca de um minuto."
 7. Apague o zip de `~/Downloads` depois do push. Se nada mudou, diga isso e não commite.
 
 ## Regras
 - Não introduzir build step, frameworks, Tailwind nem dependências — o deploy é a raiz, sem build.
 - Manter o visual: paleta em `:root` (`--bg #0A0C0A`, `--green #16B074`, `--mint #3DD898`, `--ink #04130C`, `--white #F4F7F3`), fonte Inter, botões pílula.
-- Não renomear classes e ids usados por `script.js`: `.ze-tech`, `.cases-track`, `.case`, `.menu-toggle`, `.menu`, `[data-whatsapp]`, `.mobile-contact`, `#year`.
+- Não renomear classes e ids usados por `script.js`: `.ze-tech`, `.menu-toggle`, `.menu`, `[data-whatsapp]`, `.mobile-contact`, `#year`.
 - Não recomprimir ou trocar assets sem pedido.
 - Textos em pt-BR, sem emoji.
 
 ## Pendências
-- Cases: 6 placeholders `.case-placeholder` em `index.html` aguardam os embeds do VTurb. Ao colar, substitua o `<div class="case-placeholder">…</div>` pelo embed, dentro de `.case-media` (o card já tem `aspect-ratio: 9/16`). O carrossel detecta vídeos tocando com som, inclusive em shadow DOM, e pausa sozinho.
+- Cases: a seção não existe nesta branch. Os placeholders e o carrossel estão na `main`.
