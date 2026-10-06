@@ -2,10 +2,13 @@
 
 Site estático (HTML, CSS e JS puros), sem build. A raiz deste repositório é exatamente o que o Cloudflare Pages publica; todo push em `main` vai ao ar em cerca de um minuto.
 
+## Seção de cases removida temporariamente
+A seção "03 Nossos cases" (seção, link do menu, CSS e JS do carrossel) foi tirada do ar em 2026-10-05 porque ainda havia poucos cases; Resultados passou a ser a seção 03. A versão completa está na tag `com-cases` e no commit anterior à remoção (`git log --grep "Remove temporariamente"`). Para restaurar, ao receber "Restaura os cases": `git revert <hash desse commit>` (resolve conflitos mantendo o design atual e trazendo a seção de volta), renumere Resultados para 04, cole os embeds do VTurb nos placeholders e publique.
+
 ## Estrutura
-- `index.html` — página única: hero, soluções, processo, cases, resultados, contato, rodapé.
+- `index.html` — página única: hero, soluções, processo, resultados, contato, rodapé.
 - `styles.css` — mobile-first, variáveis em `:root`, breakpoints em 480/600/640/700/900/1024px. Sem frameworks.
-- `script.js` — menu, vídeo do hero (troca 1:1 / 16:9 e só toca visível), carrossel de cases, atalho fixo de WhatsApp.
+- `script.js` — menu, vídeo do hero (troca 1:1 / 16:9 e só toca visível), atalho fixo de WhatsApp.
 - `config.js` — número e mensagens de WhatsApp (`window.SAVANNAH_CONFIG`). As mensagens começam com "Opa!".
 - `assets/` — imagens já otimizadas (WebP); posters e vídeos do hero em `assets/ze-tech/`. Zé no balcão (seção de contato) em três formatos: `ze-balcao-{desktop,mobile}-animado.avif` (preferido, inserido via `script.js` fora de Safari/iOS), `-animado.webp` (fallback) e `ze-balcao-{desktop,mobile}.webp` (estático, para quem reduz movimento). Ao trocar a animação, substitua os seis arquivos mantendo nomes e dimensões (1440×600 e 720×600).
 - `robots.txt`, `sitemap.xml` — atualize o `<lastmod>` do sitemap quando o conteúdo mudar.
@@ -28,9 +31,9 @@ As edições de design são feitas no Claude Design, que trabalha numa cópia pr
 ## Regras
 - Não introduzir build step, frameworks, Tailwind nem dependências — o deploy é a raiz, sem build.
 - Manter o visual: paleta em `:root` (`--bg #0A0C0A`, `--green #16B074`, `--mint #3DD898`, `--ink #04130C`, `--white #F4F7F3`), fonte Inter, botões pílula.
-- Não renomear classes e ids usados por `script.js`: `.ze-tech`, `.cases-track`, `.case`, `.menu-toggle`, `.menu`, `[data-whatsapp]`, `.mobile-contact`, `#year`.
+- Não renomear classes e ids usados por `script.js`: `.ze-tech`, `.menu-toggle`, `.menu`, `[data-whatsapp]`, `.mobile-contact`, `#year`.
 - Não recomprimir ou trocar assets sem pedido.
 - Textos em pt-BR, sem emoji.
 
 ## Pendências
-- Cases: 6 placeholders `.case-placeholder` em `index.html` aguardam os embeds do VTurb. Ao colar, substitua o `<div class="case-placeholder">…</div>` pelo embed, dentro de `.case-media` (o card já tem `aspect-ratio: 9/16`). O carrossel detecta vídeos tocando com som, inclusive em shadow DOM, e pausa sozinho.
+- Cases: seção removida temporariamente (veja o topo). Ao restaurar, os 6 placeholders `.case-placeholder` voltam e recebem os embeds do VTurb dentro de `.case-media` (card com `aspect-ratio: 9/16`); o carrossel detecta vídeos tocando com som, inclusive em shadow DOM, e pausa sozinho.
