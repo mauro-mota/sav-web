@@ -20,7 +20,6 @@ h1,h2,h3,p{margin:0}
 h1,h2,h3{text-wrap:balance}
 p{text-wrap:pretty}
 main:focus{outline:0}
-section[id]{scroll-margin-top:84px}
 ::selection{background:var(--mint);color:var(--ink)}
 .container{width:100%;max-width:1240px;margin-inline:auto;padding-inline:var(--gutter)}
 .svg-library{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
@@ -44,11 +43,6 @@ section[id]{scroll-margin-top:84px}
 .button-primary:hover{background:var(--mint);border-color:var(--mint);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.24)}
 .button-outline{background:transparent;border-color:rgba(244,247,243,.25);color:var(--white);font-weight:600}
 .button-outline:hover{border-color:rgba(61,216,152,.6);background:rgba(22,176,116,.08);transform:translateY(-2px)}
-
-/* Eyebrow */
-.eyebrow{display:flex;align-items:center;gap:10px;color:var(--green);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;line-height:1.4}
-.section-label{margin-bottom:16px}
-.section-label>span{color:var(--t50)}
 
 /* Header — logo + menu hambúrguer (todas as telas) */
 .header{position:sticky;top:0;z-index:20;background:rgba(10,12,10,.82);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:background .3s}
@@ -92,25 +86,41 @@ h1 span{color:var(--mint)}
 .section--line{border-top:1px solid var(--line)}
 h2{font-size:var(--fs-h2);font-weight:800;line-height:1.12;letter-spacing:-.022em}
 h2 span{color:var(--mint)}
+.section-intro {
+  max-width: 52ch;
+  color: var(--t74);
+  font-size: clamp(1rem, .94rem + .24vw, 1.125rem);
+  line-height: 1.6;
+}
 
 h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2}
 
 /* Demonstrações — a mesma ficha do portfólio, com as superfícies e a tipografia da agência. */
-#solucoes { scroll-margin-top: 0; }
 .solutions-heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 14px 32px;
-  margin-bottom: clamp(20px, 3.2vw, 40px);
+  display: grid;
+  gap: 14px;
+  margin-bottom: clamp(18px, 2.2vw, 30px);
 }
+.project-enquiry {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 44px;
+  margin-top: 3px;
+  color: var(--mint);
+  font-size: .9375rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .24em;
+  text-decoration-color: transparent;
+}
+.project-enquiry:hover, .project-enquiry:focus-visible { text-decoration-color: currentColor; }
 .solutions-navigation, .solutions-arrows {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.solutions-navigation { gap: 16px; }
+.solutions-navigation { justify-content: space-between; gap: 16px; }
 .solutions-hint { color: var(--t74); font-size: .8rem; line-height: 1.4; }
 .solutions-arrows[hidden], .solutions-pages[hidden] { display: none; }
 .solutions-arrows button {
@@ -157,6 +167,7 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
   border-radius: var(--panel-radius);
   background: var(--panel);
 }
+.solution-card[id] { scroll-margin-block-start: 96px; }
 .solution-visual {
   display: flex;
   flex-direction: column;
@@ -232,8 +243,16 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
 .solutions-pages button[aria-current="true"]::before { width: 19px; background: var(--mint); }
 .solutions :is(a, button, .solutions-track):focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
 .solutions .solution-preview:focus-visible { border-radius: 8px; }
-@media (max-width: 639px) {
-  .solutions-navigation { flex: 1 0 100%; justify-content: space-between; }
+@media (min-width: 800px) {
+  .solutions-heading {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "title intro" "controls intro";
+    align-items: start;
+    gap: 12px clamp(24px, 5vw, 76px);
+  }
+  .solutions-heading h2 { grid-area: title; }
+  .solutions-intro { grid-area: intro; }
+  .solutions-navigation { grid-area: controls; justify-content: flex-start; align-self: end; }
 }
 @media (min-width: 540px) and (max-width: 899px) {
   .solutions-track { --slide-width: min(82%, 30rem); }
@@ -247,7 +266,7 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
 
 /* Processo — intro + trilha */
 .process{display:grid;grid-template-columns:1fr;gap:48px;align-items:start}
-.process-intro>p:not(.eyebrow){font-size:15.54px;line-height:1.65;color:var(--t72);margin-top:20px;max-width:40ch}
+.process-intro .section-intro{margin-top:clamp(12px,1.5vw,22px);max-width:42ch}
 /* Zé apresentando os 3 passos — no celular fecha a seção, depois dos passos; no desktop fica sob a intro, na coluna da esquerda */
 .process-mascot{width:min(100%,420px);margin:0 auto}
 .process-mascot img{display:block;width:100%;height:auto}
@@ -270,6 +289,7 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
 
 /* Resultados — números em grade 2×2 + mascote */
 .numbers-layout{display:grid;grid-template-columns:1fr;gap:36px;align-items:end}
+.numbers-copy h2{margin-bottom:clamp(20px,2.5vw,34px)}
 .stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -296,8 +316,6 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
 /* Contato — convite centrado sobre o fundo do site; logo abaixo o Zé espia por cima do balcão, e o balcão vira o rodapé */
 .contact{border-top:1px solid var(--line);padding-top:var(--sec)}
 .contact-copy{display:flex;flex-direction:column;align-items:center;max-width:800px;text-align:center}
-.contact .eyebrow{justify-content:center;margin-bottom:18px}
-.contact-intro{font-size:17px;line-height:1.6;color:var(--t74);margin-top:18px;max-width:34ch}
 .contact .button-primary{margin-top:30px;width:100%;min-height:56px;font-size:16.5px;background:var(--mint);border-color:var(--mint)}
 .contact .button-primary:hover{background:#6ee3af;border-color:#6ee3af}
 .contact-mascot{margin-top:28px;line-height:0}
@@ -337,7 +355,6 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
   :root{--gutter:32px;--sec:120px;}
   .icon{width:20px;height:20px}
   .button{gap:12px;min-height:56px;padding:16px 32px;font-size:17px}
-  section[id]{scroll-margin-top:96px}
   .header-inner{gap:24px;min-height:80px;padding-block:16px}
   .brand{width:164px}
   .menu{position:absolute;top:100%;left:0;right:0;grid-template-rows:1fr;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease,visibility 0s .25s}
@@ -345,18 +362,14 @@ h3{font-size:var(--fs-h3);font-weight:800;letter-spacing:-.022em;line-height:1.2
   .menu-nav{display:flex;justify-content:flex-end;padding-block:10px;overflow:visible}
   .menu-panel{width:320px;padding:8px 20px 20px;background:rgba(10,12,10,.96);border:1px solid var(--border);border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
   .menu-link{min-height:50px}
-  .eyebrow{font-size:13px}
-  .section-label{margin-bottom:18px}
   h2{line-height:1.08}
   .process{gap:64px}
-  .process-intro>p:not(.eyebrow){margin-top:22px}
   .process-list li{column-gap:24px;padding-bottom:24px}
   .step-line{bottom:-18px}
   .step-card{padding:30px 32px 32px}
   .process-list h3{font-size:20px}
   .process-list p{font-size:15.5px}
   .stat-label{font-size:14.5px}
-  .contact-intro{font-size:18px}
   .contact .button-primary{margin-top:36px}
   .contact-mascot{margin-top:36px}
   .footer{padding:0 var(--gutter) 48px}

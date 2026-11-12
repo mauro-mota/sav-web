@@ -13,6 +13,8 @@ window.SAVANNAH_CONFIG = {
     dobra: "Opa! Vi a solução Dobra no site da Savannah. Queria saber como usá-la para fazer orçamentos e acompanhar os pedidos da gráfica.",
     grifo: "Opa! Tenho interesse na solução Grifo. Queria saber como ela pode ajudar a equipe a organizar as pautas e os contatos com jornalistas.",
     vao: "Opa! Vi a solução Vão no site da Savannah. Queria conversar sobre como organizar as visitas aos imóveis e os retornos aos clientes.",
-    intervalo: "Opa! Tenho interesse na solução Intervalo. Queria saber como acompanhar as entregas e aprovações das parcerias com marcas."
+    intervalo: "Opa! Tenho interesse na solução Intervalo. Queria saber como acompanhar as entregas e aprovações das parcerias com marcas.",
+    branding: "Opa! Vi o estudo da Prumo Sul e gostaria de conversar sobre posicionamento, identidade visual e comunicação para a minha marca.",
+    aquisicao: "Opa! Vi a campanha Giro Livre e quero conversar sobre mídia paga, copywriting e captação de leads para o meu negócio."
   }
 };
