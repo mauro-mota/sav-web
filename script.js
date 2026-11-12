@@ -7,7 +7,9 @@
       const message = config.services?.[link.dataset.service] || config.message || "Olá! Quero conversar sobre um projeto.";
       link.href = `https://wa.me/${config.whatsapp}?text=${encodeURIComponent(message)}`;
     }
-    link.setAttribute("aria-label", `${link.textContent.trim()} pelo WhatsApp (abre em nova aba)`);
+    if (!link.hasAttribute("aria-label")) {
+      link.setAttribute("aria-label", `${link.textContent.trim()} pelo WhatsApp (abre em nova aba)`);
+    }
   });
 
   const year = document.getElementById("year");
@@ -71,28 +73,37 @@
     });
   }
 
-  // Exibe o atalho móvel apenas quando as principais ações estão fora da tela.
+  const steps = document.querySelector(".process-list");
+  if (steps && "IntersectionObserver" in window) {
+    const trail = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      steps.classList.add("has-entered");
+      trail.disconnect();
+    }, { threshold: 0.15 });
+    trail.observe(steps);
+  }
+
+  // O contato específico do sistema tem prioridade quando o card está na tela.
   const mobileContact = document.querySelector(".mobile-contact");
-  const heroAction = document.querySelector(".hero [data-whatsapp]");
-  const contactAction = document.querySelector(".contact [data-whatsapp]");
-  const footer = document.querySelector(".footer");
-  const mascot = document.querySelector(".contact-mascot");
-  if (!mobileContact || !heroAction || !contactAction || !footer || !("IntersectionObserver" in window)) return;
+  if (!mobileContact || !("IntersectionObserver" in window)) return;
 
   const mobile = window.matchMedia("(max-width: 599px)");
-  const visible = new Map([[heroAction, true], [contactAction, false], [footer, false]]);
-  if (mascot) visible.set(mascot, false);
+  const alternatives = document.querySelectorAll("main [data-whatsapp], .contact-mascot, .footer");
+  const visible = new Set();
   const sync = () => {
-    const show = mobile.matches && ![...visible.values()].some(Boolean);
+    const show = mobile.matches && visible.size === 0;
     mobileContact.classList.toggle("is-visible", show);
     mobileContact.setAttribute("aria-hidden", String(!show));
     mobileContact.querySelector("a").tabIndex = show ? 0 : -1;
   };
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => visible.set(entry.target, entry.isIntersecting));
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) visible.add(entry.target);
+      else visible.delete(entry.target);
+    });
     sync();
   }, { threshold: 0 });
-  [...visible.keys()].forEach((element) => observer.observe(element));
+  alternatives.forEach((element) => observer.observe(element));
   if (mobile.addEventListener) mobile.addEventListener("change", sync);
   else mobile.addListener(sync);
 })();

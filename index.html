@@ -53,17 +53,17 @@
       }
     </script>
   </head>
-  <body>
+  <body id="inicio">
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <symbol id="arrow-up-right" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"></path></symbol>
       <symbol id="arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"></path></symbol>
       <symbol id="arrow-down" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6"></path></symbol>
-      <symbol id="mark-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.49c-2.23.49-2.7-1.08-2.7-1.08-.36-.93-.89-1.18-.89-1.18-.73-.5.06-.49.06-.49.8.06 1.22.83 1.22.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.58.82-2.14-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82A7.67 7.67 0 0 1 8 3.73c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.14 0 3.07-1.87 3.75-3.65 3.95.29.25.54.74.54 1.49v2.33c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></symbol>
+      <symbol id="chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-3.7-.8L4 20l1.3-4.2a8 8 0 1 1 14.7-4.3Z"></path></symbol>
     </svg>
 
-    <header class="header" id="inicio">
+    <header class="header">
       <div class="container header-inner">
         <a href="#inicio" class="brand" aria-label="Savannah Hub, início">
           <img src="assets/logo-savannahub.png" width="1597" height="212" alt="Savannah Hub">
@@ -88,7 +88,7 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <h1 id="hero-title">Você traz a ideia,<br><span>a gente executa.</span></h1>
-          <p class="hero-description"><span>Somos a Savannah:</span> agência criativa especializada em tecnologia, conteúdo e soluções integradas.</p>
+          <p class="hero-description">Desenvolvemos sites e sistemas, produzimos vídeos e criamos campanhas digitais.</p>
           <div class="hero-actions">
             <a class="button button-primary" data-whatsapp="" href="https://wa.me/5511958054512?text=Opa!%20Quero%20conversar%20sobre%20uma%20ideia%20ou%20desafio%20para%20o%20meu%20projeto." target="_blank" rel="noopener noreferrer">Vamos conversar <svg class="icon" aria-hidden="true"><use href="#arrow-up-right"></use></svg></a>
             <a class="button button-outline" href="#solucoes">Conheça as soluções <svg class="icon" aria-hidden="true"><use href="#arrow-down"></use></svg></a>
@@ -123,11 +123,11 @@
                 <a class="solution-demo" href="demos/acessos/eixo.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Eixo Oficina (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
               </div>
               <div class="solution-copy">
-                <p class="solution-category">Gestão operacional</p>
+                <p class="solution-category">Oficinas mecânicas</p>
                 <h3 id="solution-eixo">Eixo Oficina<span>Ordens de serviço</span></h3>
-                <p class="solution-description">Desenvolvi um painel visual para acompanhar serviços em uma oficina. Implementei a distribuição de veículos entre boxes, o cálculo de orçamentos e as etapas de atendimento, com validação de responsáveis e prazos.</p>
-                <div class="solution-source">
-                  <a href="https://github.com/mauro-mota/eixo-oficina" target="_blank" rel="noopener" aria-label="Ver Eixo Oficina no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                <p class="solution-description">No mapa dos boxes, a equipe vê quem está com cada carro e quais serviços aguardam peças. Quando o cliente liga, o atendente consulta a ordem de serviço para informar o andamento e a previsão de entrega.</p>
+                <div class="solution-contact">
+                  <a data-whatsapp="" data-service="eixo" href="https://wa.me/5511958054512?text=Opa!%20Vi%20a%20solu%C3%A7%C3%A3o%20Eixo%20Oficina%20no%20site%20da%20Savannah.%20Queria%20saber%20como%20ela%20pode%20ajudar%20a%20organizar%20as%20ordens%20de%20servi%C3%A7o%20da%20oficina." target="_blank" rel="noopener noreferrer" aria-label="Tenho interesse em Eixo Oficina — conversar pelo WhatsApp (abre em nova aba)">Tenho interesse <svg class="icon small-icon" aria-hidden="true"><use href="#chat"></use></svg></a>
                 </div>
               </div>
             </article>
@@ -139,11 +139,11 @@
                 <a class="solution-demo" href="demos/acessos/raia.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Raia Três (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
               </div>
               <div class="solution-copy">
-                <p class="solution-category">Análise de dados</p>
+                <p class="solution-category">Escolas de natação</p>
                 <h3 id="solution-raia">Raia Três<span>Campanhas e matrículas</span></h3>
-                <p class="solution-description">Criei um painel que relaciona o investimento por canal às aulas experimentais e matrículas de uma escola de natação. Implementei indicadores de conversão e custo de aquisição que se atualizam conforme os atendimentos são registrados.</p>
-                <div class="solution-source">
-                  <a href="https://github.com/mauro-mota/raia-tres" target="_blank" rel="noopener" aria-label="Ver Raia Três no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                <p class="solution-description">A escola acompanha quantas aulas experimentais viram matrículas em cada canal de divulgação. O painel cruza esses números com a verba investida e mostra o custo por matrícula, para orientar a próxima campanha.</p>
+                <div class="solution-contact">
+                  <a data-whatsapp="" data-service="raia" href="https://wa.me/5511958054512?text=Opa!%20Tenho%20interesse%20na%20solu%C3%A7%C3%A3o%20Raia%20Tr%C3%AAs.%20Queria%20conversar%20sobre%20como%20acompanhar%20quais%20campanhas%20trazem%20matr%C3%ADculas%20para%20a%20escola%20de%20nata%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer" aria-label="Tenho interesse em Raia Três — conversar pelo WhatsApp (abre em nova aba)">Tenho interesse <svg class="icon small-icon" aria-hidden="true"><use href="#chat"></use></svg></a>
                 </div>
               </div>
             </article>
@@ -155,11 +155,11 @@
                 <a class="solution-demo" href="demos/acessos/dobra.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Dobra (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
               </div>
               <div class="solution-copy">
-                <p class="solution-category">Cálculos e regras de negócio</p>
+                <p class="solution-category">Gráficas</p>
                 <h3 id="solution-dobra">Dobra<span>Pedidos e orçamentos</span></h3>
-                <p class="solution-description">Criei um simulador de orçamento para uma gráfica, com cálculo por papel e tiragem. Conectei a configuração do produto à aprovação e ao acompanhamento do pedido, usando formulários com validação e atualização imediata dos valores.</p>
-                <div class="solution-source">
-                  <a href="https://github.com/mauro-mota/dobra-grafica" target="_blank" rel="noopener" aria-label="Ver Dobra no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                <p class="solution-description">Se o cliente muda o papel ou a tiragem, a gráfica vê o novo preço na hora. Ao aprovar o orçamento, a equipe gera o pedido com as mesmas especificações, sem precisar digitar tudo de novo.</p>
+                <div class="solution-contact">
+                  <a data-whatsapp="" data-service="dobra" href="https://wa.me/5511958054512?text=Opa!%20Vi%20a%20solu%C3%A7%C3%A3o%20Dobra%20no%20site%20da%20Savannah.%20Queria%20saber%20como%20us%C3%A1-la%20para%20fazer%20or%C3%A7amentos%20e%20acompanhar%20os%20pedidos%20da%20gr%C3%A1fica." target="_blank" rel="noopener noreferrer" aria-label="Tenho interesse em Dobra — conversar pelo WhatsApp (abre em nova aba)">Tenho interesse <svg class="icon small-icon" aria-hidden="true"><use href="#chat"></use></svg></a>
                 </div>
               </div>
             </article>
@@ -171,11 +171,11 @@
                 <a class="solution-demo" href="demos/acessos/grifo.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Grifo (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
               </div>
               <div class="solution-copy">
-                <p class="solution-category">Relacionamento e organização de dados</p>
-                <h3 id="solution-grifo">Grifo<span>Assessoria de imprensa</span></h3>
-                <p class="solution-description">Criei um sistema de acompanhamento de pautas com histórico por jornalista, agenda de entrevistas e clipping. Implementei filtros de retorno, controle de exclusivas e verificação de conflitos de horário entre jornalistas e porta-vozes.</p>
-                <div class="solution-source">
-                  <a href="https://github.com/mauro-mota/grifo-imprensa" target="_blank" rel="noopener" aria-label="Ver Grifo no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                <p class="solution-category">Assessorias de imprensa</p>
+                <h3 id="solution-grifo">Grifo<span>Pautas e entrevistas</span></h3>
+                <p class="solution-description">Antes de oferecer uma pauta, o assessor consulta quais jornalistas já receberam a sugestão e se algum veículo tem a exclusiva. Os retornos aparecem por prazo, para a equipe saber com quem retomar a conversa naquele dia.</p>
+                <div class="solution-contact">
+                  <a data-whatsapp="" data-service="grifo" href="https://wa.me/5511958054512?text=Opa!%20Tenho%20interesse%20na%20solu%C3%A7%C3%A3o%20Grifo.%20Queria%20saber%20como%20ela%20pode%20ajudar%20a%20equipe%20a%20organizar%20as%20pautas%20e%20os%20contatos%20com%20jornalistas." target="_blank" rel="noopener noreferrer" aria-label="Tenho interesse em Grifo — conversar pelo WhatsApp (abre em nova aba)">Tenho interesse <svg class="icon small-icon" aria-hidden="true"><use href="#chat"></use></svg></a>
                 </div>
               </div>
             </article>
@@ -187,11 +187,11 @@
                 <a class="solution-demo" href="demos/acessos/vao.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Vão (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
               </div>
               <div class="solution-copy">
-                <p class="solution-category">Agendamento e CRM</p>
+                <p class="solution-category">Imobiliárias</p>
                 <h3 id="solution-vao">Vão<span>Visitas e relacionamento</span></h3>
-                <p class="solution-description">Desenvolvi uma agenda de visitas imobiliárias com visualização de imóveis e controle de disponibilidade. Implementei a prevenção de conflitos entre corretores e imóveis, além do acompanhamento de cada atendimento até a proposta e o fechamento.</p>
-                <div class="solution-source">
-                  <a href="https://github.com/mauro-mota/crm-imobiliario" target="_blank" rel="noopener" aria-label="Ver Vão no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                <p class="solution-description">A agenda impede que a imobiliária reserve o mesmo imóvel ou corretor para duas visitas no mesmo horário. Depois de cada visita realizada, a equipe vê quem precisa de retorno e acompanha o atendimento até a proposta ou o fechamento.</p>
+                <div class="solution-contact">
+                  <a data-whatsapp="" data-service="vao" href="https://wa.me/5511958054512?text=Opa!%20Vi%20a%20solu%C3%A7%C3%A3o%20V%C3%A3o%20no%20site%20da%20Savannah.%20Queria%20conversar%20sobre%20como%20organizar%20as%20visitas%20aos%20im%C3%B3veis%20e%20os%20retornos%20aos%20clientes." target="_blank" rel="noopener noreferrer" aria-label="Tenho interesse em Vão — conversar pelo WhatsApp (abre em nova aba)">Tenho interesse <svg class="icon small-icon" aria-hidden="true"><use href="#chat"></use></svg></a>
                 </div>
               </div>
             </article>
@@ -203,11 +203,11 @@
                 <a class="solution-demo" href="demos/acessos/intervalo.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Intervalo (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
               </div>
               <div class="solution-copy">
-                <p class="solution-category">Fluxos de aprovação</p>
-                <h3 id="solution-intervalo">Intervalo<span>Gestão de conteúdo</span></h3>
-                <p class="solution-description">Desenvolvi um espaço para organizar parcerias e entregas de criadores. Estruturei o controle de versões, os pedidos de ajuste e a aprovação sequencial das peças, vinculando a liberação da cobrança à conclusão das entregas.</p>
-                <div class="solution-source">
-                  <a href="https://github.com/mauro-mota/intervalo-estudio" target="_blank" rel="noopener" aria-label="Ver Intervalo no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                <p class="solution-category">Criadores de conteúdo</p>
+                <h3 id="solution-intervalo">Intervalo<span>Parcerias e entregas</span></h3>
+                <p class="solution-description">Em cada parceria com uma marca, o criador acompanha a versão enviada de cada peça e os ajustes pedidos. Quando todas as entregas são aprovadas, o painel mostra quanto falta receber pelo trabalho.</p>
+                <div class="solution-contact">
+                  <a data-whatsapp="" data-service="intervalo" href="https://wa.me/5511958054512?text=Opa!%20Tenho%20interesse%20na%20solu%C3%A7%C3%A3o%20Intervalo.%20Queria%20saber%20como%20acompanhar%20as%20entregas%20e%20aprova%C3%A7%C3%B5es%20das%20parcerias%20com%20marcas." target="_blank" rel="noopener noreferrer" aria-label="Tenho interesse em Intervalo — conversar pelo WhatsApp (abre em nova aba)">Tenho interesse <svg class="icon small-icon" aria-hidden="true"><use href="#chat"></use></svg></a>
                 </div>
               </div>
             </article>
@@ -244,12 +244,13 @@
       <section class="section section--line" id="numeros" aria-labelledby="numbers-title">
         <div class="container numbers-layout">
           <div class="numbers-copy">
-          <p class="eyebrow section-label" id="numbers-title"><span>03</span> RESULTADOS</p>
-          <ul class="stats" role="list">
-            <li class="stat"><strong class="stat-value">150+</strong><span class="stat-label">Sites e sistemas entregues</span></li><li class="stat"><strong class="stat-value">5k+</strong><span class="stat-label">criativos e vídeos entregues</span></li>
-            <li class="stat"><strong class="stat-value">45%</strong><span class="stat-label">de redução de custo por aquisição (média)</span></li>
-            <li class="stat"><strong class="stat-value">3M+</strong><span class="stat-label">pessoas alcançadas pelas campanhas</span></li>
-          </ul>
+            <h2 class="eyebrow section-label" id="numbers-title"><span>03</span> Resultados</h2>
+            <ul class="stats" role="list">
+              <li class="stat"><strong class="stat-value">150+</strong><span class="stat-label">sites e sistemas entregues</span></li>
+              <li class="stat"><strong class="stat-value">5k+</strong><span class="stat-label">criativos e vídeos entregues</span></li>
+              <li class="stat"><strong class="stat-value">45%</strong><span class="stat-label">de redução média no custo por aquisição</span></li>
+              <li class="stat"><strong class="stat-value">3M+</strong><span class="stat-label">pessoas alcançadas pelas campanhas</span></li>
+            </ul>
           </div>
           <div class="numbers-mascot" aria-hidden="true"><img src="assets/mascote-resultados.webp" width="600" height="600" alt="" loading="lazy" decoding="async"></div>
         </div>
