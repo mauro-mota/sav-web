@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intervalo — Acesso demonstrativo</title>
+  <link rel="stylesheet" href="../demo-navigation.css">
+  <link rel="stylesheet" href="../acesso.css">
+  <link rel="stylesheet" href="intervalo.css">
+  <script src="../acesso.js" defer></script>
+  <script src="intervalo.js" defer></script>
+</head>
+<body>
+  <nav class="demo-return-bar" aria-label="Savannah Hub"><span>Savannah Hub</span><a href="../../index.html#solucoes">Voltar às soluções</a></nav>
+  <main class="access-page lightroom">
+    <header class="studio-head"><h1>intervalo<i aria-hidden="true">/</i></h1><p>Estúdio de conteúdo</p></header>
+    <div class="edit-grid">
+      <section class="proof-desk" aria-label="Provas da campanha Café da Bica">
+        <div class="viewfinder"><img id="proof-image" src="../media/intervalo-editorial.webp" alt="Campanha de café, com cafeteira cromada e xícara bordô em luz de estúdio"><b aria-hidden="true"></b></div>
+        <div class="contact-strip"><div><small>Parceria</small><strong>Café da Bica</strong></div>
+          <div class="frames" role="group" aria-label="Selecionar prova fotográfica">
+            <button type="button" aria-label="Prova de estúdio" aria-pressed="true" data-alt="Campanha de café, com cafeteira cromada e xícara bordô em luz de estúdio"><img src="../media/intervalo-editorial.webp" alt=""></button>
+            <button type="button" aria-label="Prova no balcão" aria-pressed="false" data-alt="Espresso servido em uma xícara sobre o balcão de madeira"><img src="../media/prova-cafe.webp" alt=""></button>
+          </div></div>
+      </section>
+      <section class="studio-account"><span class="aperture" aria-hidden="true">✳︎</span><div><p>Área de produção</p><h2>Entrar no<br> estúdio.</h2></div>
+        <form class="login" id="access-form" data-target="../criadores.html" autocomplete="off">
+        <label>Usuário<input id="user" type="email" value="estudio@intervalo.example" required spellcheck="false" autocapitalize="none" autocomplete="off"></label>
+        <label>Senha<input id="password" type="password" value="demo123" required autocomplete="off"></label>
+        <p class="access-error" role="alert" hidden></p>
+        <button class="enter" type="submit">Entrar no estúdio</button>
+        <small class="demo-note">Acesso demonstrativo com dados de exemplo.</small>
+      </form>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

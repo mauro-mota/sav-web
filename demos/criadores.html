@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Intervalo — Parcerias e entregas</title>
+    <link rel="stylesheet" href="balcao.css" />
+    <link rel="stylesheet" href="criadores.css" />
+    <script src="balcao.js" defer></script>
+    <script src="criadores.js" defer></script>
+    <link rel="stylesheet" href="demo-navigation.css" />
+  </head>
+  <body>
+    <div class="demo-return-bar"><span>Savannah Hub</span><a href="../index.html#solucoes">Voltar às soluções</a></div>
+    <main>
+      <header>
+        <div class="signature">intervalo<span>/</span></div>
+        <span>Produção de conteúdo</span>
+      </header>
+      <div class="notice" id="notice" hidden>
+        <span role="status"></span
+        ><button type="button" hidden>Desfazer</button>
+      </div>
+      <nav class="partnerships">
+        <label for="partner">Parceria</label
+        ><select id="partner" aria-label="Escolher parceria"></select
+        ><button class="subtle" id="new-partner">+ Nova parceria</button>
+      </nav>
+      <section id="project">
+        <div class="creator-layout">
+          <div class="contact-sheet" id="art">
+            <div class="photo-frame" id="photo-frame">
+              <img
+                src="media/prova-cafe.webp"
+                alt="Prova fotográfica de um espresso servido em louça de cerâmica"
+                width="600"
+                height="400"
+              /><small>Foto · Rachel Michetti / CC0</small>
+            </div>
+            <div id="brief-front" hidden>
+              <span>Briefing de produção</span
+              ><strong id="brief-title"></strong>
+            </div>
+            <div class="slip">
+              <span id="brand"></span>
+              <h1 id="project-name"></h1>
+              <button class="subtle" id="edit-partner">Editar parceria</button>
+            </div>
+          </div>
+          <section class="deliveries">
+            <div class="between">
+              <h2>Entregas</h2>
+              <button class="subtle" id="new-task">+ Entrega</button>
+            </div>
+            <ol id="task-list"></ol>
+            <div class="fee">
+              <div><small>Cachê combinado</small><b id="fee"></b></div>
+              <div><small>Pagamento</small><b id="pay-status"></b></div>
+              <button class="outline" id="pay" hidden>
+                Registrar recebimento
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
+      <p id="no-partner" class="empty" hidden>
+        Crie uma parceria para organizar as entregas.
+      </p>
+      <dialog id="deal" aria-labelledby="deal-heading">
+        <form>
+          <div class="between">
+            <h2 id="deal-heading" tabindex="-1">Nova parceria</h2>
+            <button type="button" data-close aria-label="Fechar">×</button>
+          </div>
+          <label
+            >Marca<input
+              type="text"
+              name="brand"
+              required
+              maxlength="55" /></label
+          ><label
+            >Trabalho contratado<input
+              type="text"
+              name="title"
+              required
+              maxlength="76" /></label
+          ><label
+            >Cachê (R$)<input
+              type="number"
+              name="fee"
+              min="0"
+              step=".01"
+              max="10000000"
+              required
+          /></label>
+          <div class="actions">
+            <button type="button" class="danger">Excluir parceria</button
+            ><button type="submit" class="primary">Salvar parceria</button>
+          </div>
+        </form>
+      </dialog>
+      <dialog id="task" aria-labelledby="task-heading">
+        <form>
+          <div class="between">
+            <h2 id="task-heading" tabindex="-1">Nova entrega</h2>
+            <button type="button" data-close aria-label="Fechar">×</button>
+          </div>
+          <label
+            >Entrega<input name="title" type="text" maxlength="70" required
+          /></label>
+          <div class="two">
+            <label
+              >Formato<select name="format">
+                <option>Reel</option>
+                <option>Stories</option>
+                <option>Carrossel</option>
+                <option>Vídeo</option>
+                <option>Fotografia</option>
+              </select></label
+            ><label>Prazo<input type="date" name="due" required /></label>
+          </div>
+          <div class="actions">
+            <button type="button" class="danger">Excluir entrega</button
+            ><button type="submit" class="primary">Salvar entrega</button>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="review" aria-labelledby="review-title">
+        <form>
+          <div class="between">
+            <h2 tabindex="-1" id="review-title"></h2>
+            <button type="button" data-close aria-label="Fechar">×</button>
+          </div>
+          <p id="review-task"></p>
+          <label id="revision-label"
+            >O que precisa mudar?<textarea
+              name="note"
+              maxlength="500"
+              rows="3"
+              placeholder="Ex.: incluir uma foto aberta do balcão."
+            ></textarea>
+          </label>
+          <label id="link-label"
+            >Link da versão <small>(opcional)</small
+            ><input
+              type="url"
+              name="url"
+              maxlength="750"
+              placeholder="https://"
+          /></label>
+          <div class="actions">
+            <button type="submit" class="primary" id="confirm-review"></button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+    <footer>
+      <span>Intervalo · Demonstração com dados fictícios</span
+      ><a href="../index.html#solucoes">Voltar às soluções</a>
+    </footer>
+  </body>
+</html>

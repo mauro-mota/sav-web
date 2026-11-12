@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eixo Oficina — Acesso demonstrativo</title>
+  <link rel="stylesheet" href="../demo-navigation.css">
+  <link rel="stylesheet" href="../acesso.css">
+  <link rel="stylesheet" href="eixo.css">
+  <script src="../acesso.js" defer></script>
+</head>
+<body>
+  <nav class="demo-return-bar" aria-label="Savannah Hub"><span>Savannah Hub</span><a href="../../index.html#solucoes">Voltar às soluções</a></nav>
+  <main class="access-page bench">
+    <header class="workshop-head">
+      <h1 class="eixo-logo">eixo<span class="rotor-mark" aria-hidden="true"></span></h1>
+      <p>Oficina mecânica<br><strong>Pinheiros, SP</strong></p>
+    </header>
+    <section class="instrument" aria-label="Bancada de manutenção">
+      <div class="part-copy"><p class="micro">Ordens de serviço</p><h2>Painel da<br>oficina.</h2>
+        <p class="part-code">Bancada de manutenção</p></div>
+      <figure class="rotor"><img src="../media/eixo-rotor.webp" alt="Disco de freio ventilado com cubo e prisioneiros em aço usinado">
+        <figcaption>Disco de freio ventilado</figcaption></figure>
+      <div class="calibration" aria-hidden="true"></div>
+    </section>
+    <section class="dock"><div class="dock-title"><span class="pilot" aria-hidden="true"></span><h2>Acesso da equipe</h2></div>
+      <form class="login" id="access-form" data-target="../oficina.html" autocomplete="off">
+        <label>Usuário<input id="user" type="email" value="equipe@eixo.example" required spellcheck="false" autocapitalize="none" autocomplete="off"></label>
+        <label>Senha<input id="password" type="password" value="demo123" required autocomplete="off"></label>
+        <p class="access-error" role="alert" hidden></p>
+        <button class="enter" type="submit">Abrir painel</button>
+        <small class="demo-note">Acesso demonstrativo com dados de exemplo.</small>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

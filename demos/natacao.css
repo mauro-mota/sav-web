@@ -1,0 +1,222 @@
+:root {
+  --bg: #f4f9f7;
+  --ink: #0e3445;
+  --muted: #4d666e;
+  --accent: #005e73;
+  --line: #b9d0ce;
+  --input: white;
+  --radius: 4px;
+}
+header {
+  color: var(--accent);
+  border-bottom: 2px solid #186b77;
+}
+.raia {
+  font:
+    italic bold 38px/0.95 "Arial Black",
+    Arial,
+    sans-serif;
+  letter-spacing: -0.085em;
+}
+.raia i {
+  display: inline-block;
+  border-radius: 50%;
+  background: #ffba74;
+  padding: 2px 8px 0 5px;
+  line-height: 1;
+  color: #133745;
+}
+.swimhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 16px 0;
+}
+.swimhead h1 {
+  font-size: clamp(32px, 4.9vw, 60px);
+  letter-spacing: -0.065em;
+  margin-top: 3px;
+}
+.swimhead small {
+  font-size: 13px;
+}
+.swimhead select {
+  font-size: 13px;
+}
+.pool-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.85fr);
+  align-items: stretch;
+  gap: 17px;
+}
+.pool {
+  padding: 15px 18px 12px;
+  background: #0f5260;
+  border-radius: 8px;
+  color: #f6faf0;
+}
+.pool h2,
+.spend h2,
+.trials h2 {
+  font-size: 19px;
+  letter-spacing: -0.035em;
+}
+.pool > small {
+  font-size: 11px;
+}
+.lanes {
+  margin: 10px 0 5px;
+}
+.lane {
+  position: relative;
+  padding: 5px 0 7px;
+}
+.lane b {
+  font-size: 14px;
+}
+.lane strong {
+  font-size: 20px;
+  line-height: 1;
+}
+.lane small {
+  font-size: 12px;
+}
+.water {
+  height: 9px;
+  margin: 5px 0 2px;
+  background: #386f77;
+  border-radius: 0 3px 3px 0;
+  border-block: 1px solid #8abaaf;
+  overflow: hidden;
+}
+.water i {
+  display: block;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #ffca89 0 12px,
+    #26626b 12px 15px
+  );
+}
+.spend {
+  align-self: center;
+  padding: 10px 0 10px 18px;
+  border-left: 2px solid #e7a668;
+}
+.spend .between {
+  display: block;
+}
+.spend .subtle {
+  padding: 3px 0;
+  font-size: 12px;
+}
+.spend strong {
+  display: block;
+  color: #074e5e;
+  font-size: clamp(31px, 4.7vw, 56px);
+  letter-spacing: -0.07em;
+  line-height: 1.12;
+  margin: 8px 0;
+}
+.spend p {
+  font-size: 13px;
+  color: var(--muted);
+}
+.trials {
+  margin-top: 17px;
+}
+.trials > .between {
+  margin-bottom: 6px;
+}
+.trials .primary {
+  font-size: 14px;
+}
+.trials ul {
+  padding: 0;
+  list-style: none;
+}
+.trials li {
+  border-top: 1px solid var(--line);
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.trials b {
+  display: block;
+  font-size: 15px;
+}
+.trials li small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+.trial-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.trial-actions button {
+  font-size: 12px;
+  padding: 5px 9px;
+}
+.trials summary {
+  cursor: pointer;
+  font-size: 13px;
+  border-top: 1px solid var(--line);
+  padding-top: 6px;
+}
+@media (max-width: 620px) {
+  .swimhead {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .swimhead select {
+    font-size: 14px;
+  }
+  .pool-layout {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .pool {
+    padding: 13px 15px;
+  }
+  .spend {
+    padding: 2px 0 3px 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  .spend strong {
+    margin: 0;
+    font-size: 29px;
+  }
+  .spend .between h2 {
+    font-size: 17px;
+  }
+  .spend p {
+    grid-column: span 2;
+  }
+  .trials li {
+    gap: 5px;
+  }
+  .trial-actions {
+    gap: 0;
+  }
+  .trial-actions button {
+    padding: 4px 5px;
+  }
+  .trials .primary {
+    font-size: 13px;
+  }
+}
+
+.water i {
+  background: repeating-linear-gradient(
+    90deg,
+    #ffc180 0 12px,
+    #27646c 12px 15px
+  );
+}

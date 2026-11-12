@@ -1,0 +1,54 @@
+.press {
+  --focus: #ea411a;
+  display: grid; grid-template-columns: 56% 44%;
+  background: #edece2; color: #182271;
+}
+.artboard { min-width: 0; display: grid; grid-template-rows: auto 1fr auto; position: relative; isolation: isolate; overflow: hidden; padding: clamp(20px,3.5vw,64px); background: #2330a0; color: #fff8dd; }
+.artboard header { display: flex; align-items: center; justify-content: space-between; }
+.artboard h1 { font: 800 clamp(51px,6.5vw,98px)/.85 Arial,sans-serif; letter-spacing: -.09em; }
+.artboard h1 span { display: inline-block; width: .18em; height: .18em; margin-left: 2px; background: #ff6a3b; }
+.artboard header p { font-size: .86rem; text-align: right; }
+.proof-table { align-self: center; display: grid; place-items: center; padding: 40px 0; }
+.print-sheet { width: min(77%,370px); position: relative; aspect-ratio: .76; transform: rotate(-9deg); color: #172077; background: #ff6b37; box-shadow: 3px 4px #f7cab2,6px 7px #293dbc,8px 10px #d2c8d2,16px 21px 25px #101d7855; }
+.print-sheet::before { content: ""; position: absolute; inset: 5%; border: 1px solid #23268b60; }
+.print-sheet figcaption, .print-sheet footer { position: absolute; left: 8%; right: 8%; font: bold .68rem/1.2 Arial,sans-serif; }
+.print-sheet figcaption { top: 8%; }
+.poster-title { position: absolute; left: 7%; top: 15%; font: 850 clamp(45px,7.2vw,105px)/.81 Arial,sans-serif; letter-spacing: -.094em; z-index: 2; }
+.vinyl { position: absolute; width: 66%; aspect-ratio: 1; border-radius: 50%; bottom: 10%; right: 8%; background: radial-gradient(circle,#172077 0 2%,#fad4a4 2.5% 14%,#263195 14.5% 20%,transparent 20.5%),repeating-radial-gradient(circle,#192579 0 2px,#ff8a56 2.4px 3.5px,#192579 4px 7px); box-shadow: -9px 4px #192579; }
+.print-sheet footer { bottom: 7%; display: flex; justify-content: space-between; border-top: 1px solid; padding-top: 3px; }
+.crop-marks { position: absolute; inset: 3%; border: 1px solid #172077; mask-image: linear-gradient(to right,#000 11px,transparent 11px calc(100% - 11px),#000 calc(100% - 11px)),linear-gradient(to bottom,#000 11px,transparent 11px calc(100% - 11px),#000 calc(100% - 11px)); }
+.swatch-key { display: flex; align-items: center; gap: 12px; font-size: .8rem; }
+.ink-dots { display: flex; padding-left: 1px; }
+.ink-dots i { width: 16px; height: 16px; border-radius: 50%; background: #4cdaed; margin-left: -1px; }
+.ink-dots i:nth-child(2) { background: #ff577b; }
+.ink-dots i:nth-child(3) { background: #f8cc29; }
+.ink-dots i:nth-child(4) { background: #171933; }
+.print-order { display: flex; flex-direction: column; padding: clamp(24px,4.4vw,84px); }
+.order-num, .paper-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: .73rem ui-monospace,monospace; }
+.order-num { border-bottom: 1px solid; padding-block: 3px 12px; }
+.order-num i { width: 58px; height: 12px; background: repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 6px,currentColor 6px 7px,transparent 7px 9px); }
+.typeset { margin: auto 0 24px; padding-top: 34px; }
+.typeset p { margin-bottom: 9px; font-size: .86rem; }
+.typeset h2 { font-size: clamp(47px,5.9vw,86px); letter-spacing: -.078em; line-height: .90; }
+.print-order .login { gap: 16px; }
+.print-order input { color: #22244a; border: 0; border-bottom: 1px solid #75778c; padding-inline: 0; }
+.print-order .enter { background: #2531a1; color: white; box-shadow: 3px 3px #ff784b; }
+.paper-foot { margin-top: auto; padding-top: 30px; font-size: .65rem; }
+@media (max-width: 700px) {
+  .press { grid-template-columns: 1fr; }
+  .artboard { min-height: 210px; grid-template-rows: auto 1fr; padding: 22px; align-items: start; }
+  .artboard header { align-items: start; flex-direction: column; gap: 10px; }
+  .artboard header p { text-align: left; }
+  .proof-table { position: absolute; width: 47%; right: 3%; top: 50%; transform: translateY(-50%); padding: 0; }
+  .print-sheet { width: min(100%,188px); }
+  .poster-title { font-size: clamp(36px,9vw,50px); }
+  .print-sheet figcaption, .print-sheet footer { font-size: .48rem; }
+  .swatch-key { align-self: end; font-size: .67rem; gap: 6px; }
+  .ink-dots i { width: 10px; height: 10px; }
+  .print-order { padding: 22px; }
+  .typeset { padding-top: 22px; margin-bottom: 20px; }
+  .typeset h2 { font-size: 43px; }
+  .typeset h2 br { display: none; }
+  .typeset h2 br::after { content: " "; }
+  .paper-foot { padding-top: 20px; }
+}

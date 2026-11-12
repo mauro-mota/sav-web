@@ -96,3 +96,123 @@
   if (mobile.addEventListener) mobile.addEventListener("change", sync);
   else mobile.addListener(sync);
 })();
+
+// Fichas de sistemas. O trilho também permite rolagem por toque e trackpad sem JavaScript.
+(() => {
+  const track = document.getElementById("solutions-track");
+  if (!track) return;
+  const section = track.closest("section");
+  const cards = [...track.querySelectorAll(".solution-card")];
+  const arrows = section.querySelector(".solutions-arrows");
+  const pages = section.querySelector(".solutions-pages");
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  let requestedIndex = null;
+  let drag = null;
+
+  function nearestIndex() {
+    const left = track.scrollLeft;
+    return cards.reduce((best, card, index) =>
+      Math.abs(card.offsetLeft - left) < Math.abs(cards[best].offsetLeft - left) ? index : best, 0);
+  }
+
+  function goTo(index) {
+    requestedIndex = (index + cards.length) % cards.length;
+    track.scrollTo({ left: cards[requestedIndex].offsetLeft,
+      behavior: reducedMotion.matches ? "instant" : "smooth" });
+  }
+
+  const dots = cards.map((card, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.setAttribute("aria-label", card.querySelector("h3").firstChild.textContent);
+    dot.setAttribute("aria-controls", track.id);
+    dot.addEventListener("click", () => goTo(index));
+    pages.append(dot);
+    return dot;
+  });
+
+  function sync() {
+    const current = nearestIndex();
+    dots.forEach((dot, index) => dot.setAttribute("aria-current", String(index === current)));
+  }
+  arrows.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", () => goTo((requestedIndex ?? nearestIndex()) + Number(button.dataset.step)));
+  });
+  track.addEventListener("keydown", event => {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    const index = requestedIndex ?? nearestIndex();
+    const destination = { ArrowLeft: index - 1, ArrowRight: index + 1, Home: 0, End: cards.length - 1 };
+    if (!(event.key in destination)) return;
+    event.preventDefault();
+    track.focus({ preventScroll: true });
+    goTo(destination[event.key]);
+  });
+  track.addEventListener("scroll", sync, { passive: true });
+  track.addEventListener("scrollend", () => { requestedIndex = null; });
+  track.addEventListener("wheel", () => { requestedIndex = null; }, { passive: true });
+  track.addEventListener("focusin", event => {
+    if (event.target.closest(".solution-card")) requestedIndex = null;
+  });
+
+  // Nas extremidades, um novo deslize horizontal continua a partir da outra ponta.
+  let touchEdge = null;
+  track.addEventListener("touchstart", event => {
+    touchEdge = null;
+    if (event.touches.length !== 1) return;
+    const index = nearestIndex();
+    if ((index === 0 || index === cards.length - 1) && Math.abs(cards[index].offsetLeft - track.scrollLeft) < 2) {
+      const touch = event.touches[0];
+      touchEdge = { x: touch.clientX, y: touch.clientY, index };
+    }
+  }, { passive: true });
+  track.addEventListener("touchcancel", () => { touchEdge = null; });
+  track.addEventListener("touchend", event => {
+    if (!touchEdge) return;
+    const touch = event.changedTouches[0];
+    const dx = touch.clientX - touchEdge.x;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(touch.clientY - touchEdge.y) * 1.5) {
+      if (touchEdge.index === 0 && dx > 0) goTo(-1);
+      if (touchEdge.index === cards.length - 1 && dx < 0) goTo(0);
+    }
+    touchEdge = null;
+  }, { passive: true });
+
+  // O navegador já cuida do gesto no celular. Com mouse, distinguir arraste de clique nos links.
+  track.addEventListener("dragstart", event => event.preventDefault());
+  track.addEventListener("pointerdown", event => {
+    requestedIndex = null;
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    drag = { x: event.clientX, left: track.scrollLeft, index: nearestIndex(), active: false };
+  });
+  track.addEventListener("pointermove", event => {
+    if (!drag || event.pointerType !== "mouse") return;
+    if (!event.buttons) { drag = null; return; }
+    const dx = event.clientX - drag.x;
+    if (!drag.active && Math.abs(dx) < 7) return;
+    if (!drag.active) {
+      track.setPointerCapture(event.pointerId);
+      track.classList.add("is-dragging");
+      drag.active = true;
+    }
+    track.scrollLeft = drag.left - dx;
+  });
+  function finishDrag(event) {
+    if (!drag) return;
+    if (drag.active) {
+      const dx = event.clientX - drag.x;
+      let target = nearestIndex();
+      if (event.type === "pointerup" && target === drag.index && Math.abs(dx) > 45) {
+        target -= Math.sign(dx);
+      }
+      track.classList.remove("is-dragging");
+      goTo(target);
+    }
+    drag = null;
+  }
+  track.addEventListener("pointerup", finishDrag);
+  track.addEventListener("pointercancel", finishDrag);
+  track.addEventListener("pointerleave", () => { if (!drag?.active) drag = null; });
+  if ("ResizeObserver" in window) new ResizeObserver(sync).observe(track);
+  sync();
+  arrows.hidden = pages.hidden = false;
+})();

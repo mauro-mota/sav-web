@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Grifo — Assessoria de imprensa</title>
+    <link rel="stylesheet" href="imprensa.css" />
+    <script src="imprensa-registros.js" defer></script>
+    <script src="imprensa.js" defer></script>
+    <link rel="stylesheet" href="demo-navigation.css" />
+  </head>
+  <body>
+    <div class="demo-return-bar"><span>Savannah Hub</span><a href="../index.html#solucoes">Voltar às soluções</a></div>
+    <main>
+      <header class="mast">
+        <div class="signature">
+          <b>
+            grifo
+            <i>.</i>
+          </b>
+          <span>
+            Assessoria
+            <br />
+            de imprensa
+          </span>
+        </div>
+        <nav aria-label="Pautas">
+          <select id="campaign" aria-label="Escolher pauta"></select>
+          <button id="new-campaign" class="quiet" type="button">
+            + Nova pauta
+          </button>
+        </nav>
+      </header>
+      <div id="notice" class="notice" hidden>
+        <span id="message" role="status"></span>
+        <button id="undo" hidden type="button">Desfazer</button>
+      </div>
+      <section id="campaign-view" aria-label="Pauta selecionada">
+        <div class="cover">
+          <div class="cover-title">
+            <span id="client"></span>
+            <h1 id="headline"></h1>
+            <p id="exclusive-summary" class="exclusive-line" hidden></p>
+          </div>
+          <div class="cover-meta">
+            <button id="edit-campaign" class="on-ink" type="button">
+              Editar pauta
+            </button>
+            <div>
+              <small>Lançamento</small>
+              <time id="launch"></time>
+            </div>
+          </div>
+        </div>
+        <button
+          id="next-interview"
+          class="interview-strip"
+          type="button"
+          hidden
+        >
+          <span class="kicker">Próxima entrevista</span>
+          <strong></strong>
+          <span class="slot"></span>
+        </button>
+        <section class="ledger" aria-labelledby="ledger-title">
+          <div class="ledger-heading">
+            <h2 id="ledger-title">Caderno de pauta</h2>
+            <button id="new-contact" class="primary" type="button">
+              + Contato
+            </button>
+          </div>
+          <div class="controls">
+            <div
+              role="group"
+              aria-label="Consultar acompanhamento da pauta"
+              id="filters"
+            >
+              <button type="button" data-filter="all" aria-pressed="true">
+                Contatos
+                <span></span>
+              </button>
+              <button type="button" data-filter="due" aria-pressed="false">
+                Retornos
+                <span></span>
+              </button>
+              <button type="button" data-filter="agenda" aria-pressed="false">
+                Entrevistas
+                <span></span>
+              </button>
+              <button
+                type="button"
+                data-filter="published"
+                aria-pressed="false"
+              >
+                Clipping
+                <span></span>
+              </button>
+            </div>
+            <input
+              id="search"
+              type="search"
+              aria-label="Buscar por jornalista ou veículo"
+              placeholder="Buscar nome ou veículo"
+            />
+          </div>
+          <p class="context" id="filter-note" hidden></p>
+          <div class="columns" aria-hidden="true">
+            <span>Jornalista / Veículo</span>
+            <span>Etapa</span>
+            <span id="date-column">Próximo retorno</span>
+            <span></span>
+          </div>
+          <ul id="contacts"></ul>
+          <p class="empty" id="empty-list" hidden></p>
+        </section>
+      </section>
+      <section id="empty-campaigns" hidden>
+        <h1>Nenhuma pauta aberta</h1>
+        <p>Use “Nova pauta” para começar.</p>
+      </section>
+      <footer>
+        <span>Grifo · Demonstração com dados fictícios</span>
+        <a href="../index.html#solucoes">Voltar às soluções</a>
+      </footer>
+    </main>
+
+    <dialog id="profile-dialog" aria-labelledby="profile-name">
+      <div class="profile-body">
+        <div class="dialog-heading">
+          <div>
+            <p class="kicker" id="profile-outlet"></p>
+            <h2 tabindex="-1" id="profile-name"></h2>
+          </div>
+          <button type="button" class="close" aria-label="Fechar">×</button>
+        </div>
+        <div class="profile-meta">
+          <span class="stage" id="profile-stage"></span>
+          <button type="button" class="text-button" id="edit-profile">
+            Editar contato
+          </button>
+        </div>
+        <p id="profile-notes"></p>
+        <dl id="profile-facts"></dl>
+        <div class="profile-actions">
+          <button type="button" class="primary" data-new="history">
+            Registrar conversa
+          </button>
+          <button type="button" class="quiet" data-new="interviews">
+            Agendar entrevista
+          </button>
+          <button type="button" class="quiet" data-new="clips">
+            Registrar matéria
+          </button>
+        </div>
+        <div class="log-heading"><h3>Histórico do contato</h3></div>
+        <ul id="profile-log"></ul>
+      </div>
+    </dialog>
+    <dialog id="entry-dialog" aria-labelledby="entry-heading">
+      <form id="entry-form">
+        <div class="dialog-heading">
+          <h2 tabindex="-1" id="entry-heading"></h2>
+          <button type="button" class="close" aria-label="Fechar">×</button>
+        </div>
+        <label id="entry-person">
+          Jornalista
+          <select name="who" required></select>
+        </label>
+        <p id="entry-byline" class="byline"></p>
+        <fieldset data-fields="history">
+          <div class="pair">
+            <label>
+              Data da conversa
+              <input name="date" type="date" required />
+            </label>
+            <label>
+              Canal
+              <select name="channel">
+                <option>E-mail</option>
+                <option>Telefone</option>
+                <option>WhatsApp</option>
+                <option>Presencial</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            O que foi combinado?
+            <textarea
+              name="summary"
+              rows="3"
+              maxlength="750"
+              required
+            ></textarea>
+          </label>
+          <label id="next-follow">
+            Próximo retorno
+            <small>(opcional)</small>
+            <input name="next" type="date" />
+            <small>Deixe em branco para encerrar o retorno atual.</small>
+          </label>
+        </fieldset>
+        <fieldset data-fields="interviews">
+          <label>
+            Porta-voz
+            <input
+              type="text"
+              name="source"
+              maxlength="90"
+              required
+              placeholder="Nome de quem será entrevistado"
+            />
+          </label>
+          <label>
+            Data e horário
+            <input name="start" type="datetime-local" required />
+          </label>
+          <div class="pair">
+            <label>
+              Duração
+              <select name="minutes">
+                <option value="15">15 minutos</option>
+                <option value="30">30 minutos</option>
+                <option value="45">45 minutos</option>
+                <option value="60">1 hora</option>
+              </select>
+            </label>
+            <label>
+              Formato
+              <select name="medium">
+                <option>Telefone</option>
+                <option>Videochamada</option>
+                <option>Presencial</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Local ou instruções
+            <small>(opcional)</small>
+            <input type="text" name="place" maxlength="160" />
+          </label>
+          <label id="meeting-state">
+            Situação
+            <select name="status">
+              <option value="scheduled">Agendada</option>
+              <option value="done">Realizada</option>
+              <option value="canceled">Cancelada</option>
+            </select>
+          </label>
+        </fieldset>
+        <fieldset data-fields="clips">
+          <label>
+            Título da matéria
+            <input name="title" type="text" required maxlength="150" />
+          </label>
+          <div class="pair">
+            <label>
+              Publicação
+              <input name="date" type="date" required />
+            </label>
+            <label>
+              Formato
+              <select name="format">
+                <option>Online</option>
+                <option>Impresso</option>
+                <option>Rádio</option>
+                <option>TV</option>
+                <option>Podcast</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Link da matéria
+            <small>(opcional)</small>
+            <input
+              name="url"
+              type="url"
+              placeholder="https://"
+              maxlength="750"
+            />
+          </label>
+          <a
+            id="entry-read-clip"
+            target="_blank"
+            rel="noopener noreferrer"
+            hidden
+          >
+            Ler matéria
+          </a>
+        </fieldset>
+        <p id="entry-error" role="alert" hidden></p>
+        <div class="actions">
+          <button type="button" class="danger" id="remove-entry">
+            Excluir registro
+          </button>
+          <button class="primary" type="submit" id="save-entry">Salvar</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="campaign-dialog" aria-labelledby="campaign-heading">
+      <form id="campaign-form">
+        <div class="dialog-heading">
+          <h2 id="campaign-heading" tabindex="-1">Nova pauta</h2>
+          <button type="button" class="close" aria-label="Fechar">×</button>
+        </div>
+        <label>
+          Título da pauta
+          <input name="headline" required maxlength="100" autocomplete="off" />
+        </label>
+        <label>
+          Cliente
+          <input name="client" required maxlength="70" autocomplete="off" />
+        </label>
+        <label>
+          Data de lançamento
+          <input name="launch" type="date" />
+        </label>
+        <p id="remove-hint" class="hint" hidden>
+          Excluir a pauta também remove seus contatos desta lista.
+        </p>
+        <div class="actions">
+          <button id="delete-campaign" class="danger" type="button">
+            Excluir pauta
+          </button>
+          <button class="primary" type="submit">Salvar pauta</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="contact-dialog" aria-labelledby="contact-heading">
+      <form id="contact-form">
+        <div class="dialog-heading">
+          <h2 id="contact-heading" tabindex="-1">Adicionar contato</h2>
+          <button type="button" class="close" aria-label="Fechar">×</button>
+        </div>
+        <div class="pair">
+          <label>
+            Jornalista
+            <input name="name" required maxlength="70" autocomplete="off" />
+          </label>
+          <label>
+            Veículo
+            <input name="outlet" required maxlength="70" autocomplete="off" />
+          </label>
+        </div>
+        <label>
+          E-mail
+          <small>(opcional)</small>
+          <input name="email" type="email" maxlength="150" autocomplete="off" />
+        </label>
+        <label>
+          Etapa
+          <select name="stage"></select>
+        </label>
+        <label id="follow-field">
+          Próximo retorno
+          <input name="follow" type="date" />
+        </label>
+        <details id="exclusive-options">
+          <summary>Exclusividade com o veículo</summary>
+          <label id="exclusive-field">
+            Reservar a exclusiva até
+            <input name="exclusive" type="date" />
+          </label>
+          <p class="hint" id="exclusive-hint"></p>
+        </details>
+        <fieldset id="clip-fields" hidden>
+          <legend>Publicação</legend>
+          <label>
+            Data da publicação
+            <input name="published" type="date" />
+          </label>
+          <label>
+            Link da matéria
+            <small>(opcional)</small>
+            <input
+              name="url"
+              type="url"
+              placeholder="https://"
+              maxlength="750"
+            />
+          </label>
+          <a
+            id="read-clip"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            hidden
+          >
+            Abrir matéria
+          </a>
+        </fieldset>
+        <label>
+          Notas da conversa
+          <textarea name="notes" rows="2" maxlength="750"></textarea>
+        </label>
+        <div class="actions">
+          <button id="delete-contact" class="danger" type="button">
+            Excluir contato
+          </button>
+          <button class="primary" type="submit">Salvar contato</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

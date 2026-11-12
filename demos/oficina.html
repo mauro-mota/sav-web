@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eixo Oficina — Painel de serviços</title>
+    <link rel="stylesheet" href="demos.css" />
+    <script src="balcao.js" defer></script>
+    <script src="oficina.js" defer></script>
+    <link rel="stylesheet" href="demo-navigation.css" />
+  </head>
+  <body class="workshop">
+    <div class="demo-return-bar"><span>Savannah Hub</span><a href="../index.html#solucoes">Voltar às soluções</a></div>
+    <main>
+      <header>
+        <b class="wordmark">
+          eixo
+          <span aria-hidden="true">◒</span>
+        </b>
+        <span>Oficina mecânica &nbsp; / &nbsp; Pinheiros</span>
+      </header>
+      <div class="workshop-heading">
+        <div>
+          <small>Ordens de serviço</small>
+          <h1>Painel da oficina</h1>
+        </div>
+        <div class="bay-count">
+          <b id="occupied-count"></b>
+          <small>boxes ocupados</small>
+        </div>
+      </div>
+      <div id="notice" class="shop-notice" hidden>
+        <span role="status"></span>
+        <button type="button" hidden>Desfazer exclusão</button>
+      </div>
+      <div class="workshop-layout">
+        <section class="floor" aria-labelledby="floor-title">
+          <div class="sectionline">
+            <b id="floor-title">Mapa dos boxes</b>
+            <button type="button" id="new-job" class="shop-secondary">
+              + Abrir OS
+            </button>
+          </div>
+          <div id="bays"></div>
+          <div class="bay-legend" aria-hidden="true">
+            <span>Em serviço</span>
+            <span>A iniciar</span>
+            <span>Aguarda peça</span>
+            <span>Livre</span>
+          </div>
+        </section>
+        <section
+          class="service-detail"
+          aria-label="Ordem de serviço selecionada"
+        >
+          <div class="detail-heading">
+            <small id="job-id"></small>
+            <button id="edit-job" type="button" class="text-action">
+              Editar OS
+            </button>
+          </div>
+          <h2 id="vehicle"></h2>
+          <p id="service-name"></p>
+          <dl id="job-details">
+            <div>
+              <dt>Situação</dt>
+              <dd id="job-state"></dd>
+            </div>
+            <div hidden>
+              <dt>Placa</dt>
+              <dd id="plate"></dd>
+            </div>
+            <div>
+              <dt>Cliente</dt>
+              <dd id="customer"></dd>
+            </div>
+            <div>
+              <dt>Responsável</dt>
+              <dd id="technician"></dd>
+            </div>
+            <div>
+              <dt>Previsão</dt>
+              <dd id="due"></dd>
+            </div>
+            <div>
+              <dt>Orçamento</dt>
+              <dd id="job-total"></dd>
+            </div>
+          </dl>
+          <button type="button" id="job-action"></button>
+          <button type="button" id="from-queue" class="text-action" hidden>
+            Trazer veículo da fila
+          </button>
+          <button type="button" id="pause-job" class="text-action" hidden>
+            Aguardar peça
+          </button>
+          <p id="job-feedback" role="status"></p>
+        </section>
+      </div>
+      <section class="workshop-totals" aria-label="Resumo da oficina">
+        <b>Resumo da oficina</b>
+        <div>
+          <span>A iniciar</span>
+          <strong id="waiting-count"></strong>
+        </div>
+        <div>
+          <span>Em serviço</span>
+          <strong id="active-count"></strong>
+        </div>
+        <div>
+          <span>Concluídos hoje</span>
+          <strong id="done-count"></strong>
+        </div>
+      </section>
+      <details id="desk" class="desk">
+        <summary>
+          <b>Balcão de atendimento</b>
+          <span id="desk-summary"></span>
+        </summary>
+        <div
+          class="desk-filters"
+          role="group"
+          aria-label="Filtrar ordens do balcão"
+        >
+          <button type="button" data-filter="queue">Fila de espera</button>
+          <button type="button" data-filter="ready">Para retirada</button>
+          <button type="button" data-filter="delivered">Entregues</button>
+        </div>
+        <ul id="desk-list"></ul>
+      </details>
+    </main>
+    <dialog id="order-dialog" aria-labelledby="order-heading">
+      <form id="order-form">
+        <div class="form-heading">
+          <h2 id="order-heading" tabindex="-1">Abrir ordem de serviço</h2>
+          <button type="button" data-close aria-label="Fechar">×</button>
+        </div>
+        <div class="pair">
+          <label>
+            Cliente
+            <input
+              name="customer"
+              type="text"
+              required
+              maxlength="64"
+              autocomplete="off"
+            />
+          </label>
+          <label>
+            Modelo do veículo
+            <input
+              name="model"
+              type="text"
+              placeholder="Ex.: Onix"
+              required
+              maxlength="45"
+            />
+          </label>
+        </div>
+        <label>
+          Serviço solicitado
+          <input
+            name="service"
+            type="text"
+            required
+            maxlength="100"
+            placeholder="Ex.: revisão de 40.000 km"
+          />
+        </label>
+        <div class="pair">
+          <label id="bay-field">
+            Local do atendimento
+            <select name="bay"></select>
+          </label>
+          <label>
+            Responsável
+            <select name="tech"></select>
+          </label>
+        </div>
+        <label>
+          Previsão de entrega
+          <input type="datetime-local" name="due" required />
+        </label>
+        <details class="order-extra">
+          <summary>Veículo e orçamento</summary>
+          <div class="pair">
+            <label>
+              Marca
+              <input name="make" type="text" maxlength="40" />
+            </label>
+            <label>
+              Carroceria
+              <select name="body">
+                <option value="hatch">Hatch</option>
+                <option value="sedan">Sedã</option>
+                <option value="suv">SUV</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Placa
+            <small>(opcional)</small>
+            <input
+              name="plate"
+              type="text"
+              maxlength="8"
+              placeholder="ABC1D23"
+              autocapitalize="characters"
+              autocomplete="off"
+            />
+          </label>
+          <div class="pair">
+            <label>
+              Peças (R$)
+              <input
+                name="parts"
+                type="number"
+                min="0"
+                max="999999"
+                step="0.01"
+                inputmode="decimal"
+              />
+            </label>
+            <label>
+              Mão de obra (R$)
+              <input
+                name="labor"
+                type="number"
+                min="0"
+                max="999999"
+                step="0.01"
+                inputmode="decimal"
+              />
+            </label>
+          </div>
+          <div class="quote-total">
+            <span>Orçamento estimado</span>
+            <output id="estimate"></output>
+          </div>
+        </details>
+        <p class="form-error" role="status" id="form-error"></p>
+        <div class="form-actions">
+          <button class="danger" id="delete-job" type="button">
+            Excluir OS
+          </button>
+          <button type="submit" class="shop-primary" id="save-job">
+            Abrir OS
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <footer>
+      <span>Eixo Oficina · Demonstração com dados fictícios</span>
+      <a href="../index.html#solucoes">Voltar às soluções</a>
+    </footer>
+  </body>
+</html>

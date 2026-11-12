@@ -60,6 +60,7 @@
       <symbol id="arrow-up-right" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"></path></symbol>
       <symbol id="arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"></path></symbol>
       <symbol id="arrow-down" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6"></path></symbol>
+      <symbol id="mark-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.49c-2.23.49-2.7-1.08-2.7-1.08-.36-.93-.89-1.18-.89-1.18-.73-.5.06-.49.06-.49.8.06 1.22.83 1.22.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.58.82-2.14-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82A7.67 7.67 0 0 1 8 3.73c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.14 0 3.07-1.87 3.75-3.65 3.95.29.25.54.74.54 1.49v2.33c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></symbol>
     </svg>
 
     <header class="header" id="inicio">
@@ -74,7 +75,7 @@
       <div class="menu" id="menu">
         <nav class="container menu-nav" aria-label="Navegação principal">
           <div class="menu-panel">
-            <a class="menu-link" href="#solucoes">O que fazemos</a>
+            <a class="menu-link" href="#solucoes">Principais soluções</a>
             <a class="menu-link" href="#processo">Como trabalhamos</a>
             <a class="menu-link" href="#numeros">Resultados</a>
             <a class="menu-link" href="#contato">Contato</a>
@@ -98,37 +99,120 @@
         </div>
       </section>
 
-      <section class="section section--card" id="solucoes" aria-labelledby="solutions-title">
+      <section class="section solutions" id="solucoes" aria-labelledby="solutions-title">
         <div class="container">
-          <div class="section-heading">
+          <div class="solutions-heading">
             <div>
-              <p class="eyebrow section-label"><span>01</span> O que fazemos</p>
-              <h2 id="solutions-title">Conheça nosso escopo.</h2>
+              <p class="eyebrow section-label"><span>01</span> Sistemas demonstrativos</p>
+              <h2 id="solutions-title">Principais <span>soluções</span></h2>
+            </div>
+            <div class="solutions-navigation">
+              <p class="solutions-hint">Deslize para explorar as soluções</p>
+              <div class="solutions-arrows" hidden>
+                <button type="button" data-step="-1" aria-label="Solução anterior" aria-controls="solutions-track"><svg class="icon" aria-hidden="true"><use href="#arrow-right"></use></svg></button>
+                <button type="button" data-step="1" aria-label="Próxima solução" aria-controls="solutions-track"><svg class="icon" aria-hidden="true"><use href="#arrow-right"></use></svg></button>
+              </div>
             </div>
           </div>
-          <div class="service-grid">
-            <article class="service" aria-labelledby="web-title">
-              <div class="service-copy">
-                <h3 id="web-title">Desenvolvimento Web</h3>
-                <ul class="service-details"><li>Sites e landing pages</li><li>Sistemas, portais e áreas de membros</li><li>Apps e plataformas SaaS</li><li>Agentes de IA sob medida para o seu negócio</li></ul>
-                <a class="service-link" data-whatsapp="" data-service="tecnologia" href="https://wa.me/5511958054512?text=Opa!%20Quero%20conversar%20sobre%20um%20site%2C%20sistema%20ou%20SaaS.%20Gostaria%20de%20entender%20as%20possibilidades%20para%20o%20meu%20projeto." target="_blank" rel="noopener noreferrer">Tirar minha ideia do papel <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-up-right"></use></svg></a>
+          <div class="solutions-track" id="solutions-track" role="region" aria-label="Demonstrações das soluções" tabindex="0">
+            <article class="solution-card" aria-labelledby="solution-eixo">
+              <div class="solution-visual">
+                <a class="solution-preview" href="demos/acessos/eixo.html" target="_blank" rel="noopener" aria-label="Testar Eixo Oficina (abre em nova aba)">
+                  <img src="assets/solucoes/eixo-login.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Tela de acesso da equipe de Eixo Oficina, com campos de usuário e senha.">
+                </a>
+                <a class="solution-demo" href="demos/acessos/eixo.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Eixo Oficina (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
+              </div>
+              <div class="solution-copy">
+                <p class="solution-category">Gestão operacional</p>
+                <h3 id="solution-eixo">Eixo Oficina<span>Ordens de serviço</span></h3>
+                <p class="solution-description">Desenvolvi um painel visual para acompanhar serviços em uma oficina. Implementei a distribuição de veículos entre boxes, o cálculo de orçamentos e as etapas de atendimento, com validação de responsáveis e prazos.</p>
+                <div class="solution-source">
+                  <a href="https://github.com/mauro-mota/eixo-oficina" target="_blank" rel="noopener" aria-label="Ver Eixo Oficina no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                </div>
               </div>
             </article>
-            <article class="service" aria-labelledby="video-title">
-              <div class="service-copy">
-                <h3 id="video-title">Vídeos profissionais</h3>
-                <ul class="service-details"><li>Reels, Shorts e YouTube</li><li>Vídeos institucionais</li><li>Criativos para campanhas</li><li>Consultoria e direcionamento de criativos</li></ul>
-                <a class="service-link" data-whatsapp="" data-service="video" href="https://wa.me/5511958054512?text=Opa!%20Quero%20conversar%20sobre%20um%20projeto%20de%20v%C3%ADdeo.%20Gostaria%20de%20contar%20minha%20ideia%20e%20entender%20as%20possibilidades." target="_blank" rel="noopener noreferrer">Pensar no meu próximo vídeo <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-up-right"></use></svg></a>
+            <article class="solution-card" aria-labelledby="solution-raia">
+              <div class="solution-visual">
+                <a class="solution-preview" href="demos/acessos/raia.html" target="_blank" rel="noopener" aria-label="Testar Raia Três (abre em nova aba)">
+                  <img src="assets/solucoes/raia-login.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Tela de acesso da equipe de Raia Três, com campos de usuário e senha.">
+                </a>
+                <a class="solution-demo" href="demos/acessos/raia.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Raia Três (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
+              </div>
+              <div class="solution-copy">
+                <p class="solution-category">Análise de dados</p>
+                <h3 id="solution-raia">Raia Três<span>Campanhas e matrículas</span></h3>
+                <p class="solution-description">Criei um painel que relaciona o investimento por canal às aulas experimentais e matrículas de uma escola de natação. Implementei indicadores de conversão e custo de aquisição que se atualizam conforme os atendimentos são registrados.</p>
+                <div class="solution-source">
+                  <a href="https://github.com/mauro-mota/raia-tres" target="_blank" rel="noopener" aria-label="Ver Raia Três no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                </div>
               </div>
             </article>
-            <article class="service" aria-labelledby="marketing-title">
-              <div class="service-copy">
-                <h3 id="marketing-title">Marketing &amp; vendas</h3>
-                <ul class="service-details"><li>Implementação de campanhas digitais</li><li>Meta Ads, Google Ads e TikTok Ads</li><li>Copywriting e campanhas de vendas</li><li>E-commerce no TikTok Shop</li><li>Consultoria individual de estratégia digital e Marketing</li></ul>
-                <a class="service-link" data-whatsapp="" data-service="marketing" href="https://wa.me/5511958054512?text=Opa!%20Quero%20conversar%20sobre%20marketing%20e%20tr%C3%A1fego%20pago%20para%20o%20meu%20projeto.%20Podemos%20pensar%20nos%20pr%C3%B3ximos%20passos%3F" target="_blank" rel="noopener noreferrer">Planejar meu crescimento <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-up-right"></use></svg></a>
+            <article class="solution-card" aria-labelledby="solution-dobra">
+              <div class="solution-visual">
+                <a class="solution-preview" href="demos/acessos/dobra.html" target="_blank" rel="noopener" aria-label="Testar Dobra (abre em nova aba)">
+                  <img src="assets/solucoes/dobra-login.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Tela de acesso da equipe de Dobra, com campos de usuário e senha.">
+                </a>
+                <a class="solution-demo" href="demos/acessos/dobra.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Dobra (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
+              </div>
+              <div class="solution-copy">
+                <p class="solution-category">Cálculos e regras de negócio</p>
+                <h3 id="solution-dobra">Dobra<span>Pedidos e orçamentos</span></h3>
+                <p class="solution-description">Criei um simulador de orçamento para uma gráfica, com cálculo por papel e tiragem. Conectei a configuração do produto à aprovação e ao acompanhamento do pedido, usando formulários com validação e atualização imediata dos valores.</p>
+                <div class="solution-source">
+                  <a href="https://github.com/mauro-mota/dobra-grafica" target="_blank" rel="noopener" aria-label="Ver Dobra no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                </div>
+              </div>
+            </article>
+            <article class="solution-card" aria-labelledby="solution-grifo">
+              <div class="solution-visual">
+                <a class="solution-preview" href="demos/acessos/grifo.html" target="_blank" rel="noopener" aria-label="Testar Grifo (abre em nova aba)">
+                  <img src="assets/solucoes/grifo-login.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Tela de acesso da equipe de Grifo, com campos de usuário e senha.">
+                </a>
+                <a class="solution-demo" href="demos/acessos/grifo.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Grifo (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
+              </div>
+              <div class="solution-copy">
+                <p class="solution-category">Relacionamento e organização de dados</p>
+                <h3 id="solution-grifo">Grifo<span>Assessoria de imprensa</span></h3>
+                <p class="solution-description">Criei um sistema de acompanhamento de pautas com histórico por jornalista, agenda de entrevistas e clipping. Implementei filtros de retorno, controle de exclusivas e verificação de conflitos de horário entre jornalistas e porta-vozes.</p>
+                <div class="solution-source">
+                  <a href="https://github.com/mauro-mota/grifo-imprensa" target="_blank" rel="noopener" aria-label="Ver Grifo no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                </div>
+              </div>
+            </article>
+            <article class="solution-card" aria-labelledby="solution-vao">
+              <div class="solution-visual">
+                <a class="solution-preview" href="demos/acessos/vao.html" target="_blank" rel="noopener" aria-label="Testar Vão (abre em nova aba)">
+                  <img src="assets/solucoes/vao-login.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Tela de acesso da equipe de Vão, com campos de usuário e senha.">
+                </a>
+                <a class="solution-demo" href="demos/acessos/vao.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Vão (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
+              </div>
+              <div class="solution-copy">
+                <p class="solution-category">Agendamento e CRM</p>
+                <h3 id="solution-vao">Vão<span>Visitas e relacionamento</span></h3>
+                <p class="solution-description">Desenvolvi uma agenda de visitas imobiliárias com visualização de imóveis e controle de disponibilidade. Implementei a prevenção de conflitos entre corretores e imóveis, além do acompanhamento de cada atendimento até a proposta e o fechamento.</p>
+                <div class="solution-source">
+                  <a href="https://github.com/mauro-mota/crm-imobiliario" target="_blank" rel="noopener" aria-label="Ver Vão no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                </div>
+              </div>
+            </article>
+            <article class="solution-card" aria-labelledby="solution-intervalo">
+              <div class="solution-visual">
+                <a class="solution-preview" href="demos/acessos/intervalo.html" target="_blank" rel="noopener" aria-label="Testar Intervalo (abre em nova aba)">
+                  <img src="assets/solucoes/intervalo-login.webp" width="1080" height="720" loading="lazy" decoding="async" alt="Tela de acesso da equipe de Intervalo, com campos de usuário e senha.">
+                </a>
+                <a class="solution-demo" href="demos/acessos/intervalo.html" target="_blank" rel="noopener" aria-label="Testar demonstração de Intervalo (abre em nova aba)">Testar demonstração <svg class="icon small-icon" aria-hidden="true"><use href="#arrow-right"></use></svg></a>
+              </div>
+              <div class="solution-copy">
+                <p class="solution-category">Fluxos de aprovação</p>
+                <h3 id="solution-intervalo">Intervalo<span>Gestão de conteúdo</span></h3>
+                <p class="solution-description">Desenvolvi um espaço para organizar parcerias e entregas de criadores. Estruturei o controle de versões, os pedidos de ajuste e a aprovação sequencial das peças, vinculando a liberação da cobrança à conclusão das entregas.</p>
+                <div class="solution-source">
+                  <a href="https://github.com/mauro-mota/intervalo-estudio" target="_blank" rel="noopener" aria-label="Ver Intervalo no GitHub (abre em nova aba)"><svg width="16" height="16" aria-hidden="true"><use href="#mark-github"></use></svg> Ver no GitHub</a>
+                </div>
               </div>
             </article>
           </div>
+          <div class="solutions-pages" role="group" aria-label="Escolher solução" hidden></div>
         </div>
       </section>
 

@@ -1,0 +1,36 @@
+.aquatics {
+  --focus: #dc4529;
+  display: grid; grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; align-items: center;
+  padding: clamp(22px,4vw,76px); color: white;
+  background: linear-gradient(165deg,#052d50a8,transparent 58%,#003a6466),url("../media/raia-piscina.webp") center/cover, #006a94;
+}
+.pool-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid #ffffffa1; text-shadow: 0 1px 3px #003855; }
+.pool-head p { font-weight: 700; }
+.pool-head span { font-size: .8rem; }
+.pool-name { align-self: start; padding: 20px 12px 20px 0; font: italic 900 clamp(74px,14vw,212px)/.87 "Arial Black","Helvetica Neue",Arial,sans-serif; letter-spacing: -.099em; text-shadow: 0 2px 15px #00405f3b; }
+.pool-name span { padding-left: .07em; }
+.pool-pass { position: relative; display: grid; grid-template-columns: 1fr 85px; justify-self: end; width: min(100%,650px); color: #073752; background: #f8f8ed; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 40px #00395450; }
+.pass-main { padding: clamp(18px,2.3vw,33px); }
+.pass-main h2 { font: italic 800 clamp(26px,3vw,44px)/1 "Helvetica Neue",Arial,sans-serif; letter-spacing: -.065em; margin-bottom: 20px; }
+.pass-main .login { grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 12px; align-items: end; }
+.pass-main input { border: 1px solid #a1b9b9; background: #fffefa; border-radius: 3px; }
+.pass-main .enter { background: #083c57; color: white; border-radius: 4px; }
+.pass-main .demo-note { color: #4b636c; align-self: center; }
+.pass-stub { display: flex; flex-direction: column; align-items: center; justify-content: space-between; border-left: 2px dashed #8f311f; padding: 16px 10px; background: #fe714c; color: #0a3246; }
+.pass-stub strong { font: italic 900 71px/.9 "Arial Black",Arial,sans-serif; letter-spacing: -.08em; }
+.pass-stub small { font-size: .72rem; font-weight: 700; }
+.bars { width: 43px; height: 52px; background: repeating-linear-gradient(0deg,#103c4f 0 2px,transparent 2px 5px,#103c4f 5px 6px,transparent 6px 11px); }
+@media (max-width: 700px) {
+  .aquatics { padding: 18px 14px; min-height: calc(100svh - 54px); }
+  .pool-head { font-size: .78rem; }
+  .pool-head span { font-size: .72rem; }
+  .pool-name { font-size: clamp(64px,17vw,111px); padding-bottom: 30px; }
+  .pool-pass { grid-template-columns: minmax(0,1fr) 37px; }
+  .pass-main { padding: 18px 14px; }
+  .pass-main h2 { margin-bottom: 15px; }
+  .pass-main .login { grid-template-columns: minmax(0,1fr); }
+  .pass-stub { padding: 14px 2px; }
+  .pass-stub strong { font-size: 38px; }
+  .pass-stub small { writing-mode: vertical-rl; }
+  .bars { width: 20px; }
+}

@@ -1,0 +1,216 @@
+:root {
+  --bg: #f8f8ef;
+  --ink: #152052;
+  --muted: #575966;
+  --accent: #2439a8;
+  --line: #a9abc1;
+  --radius: 0;
+  --input: #fffef6;
+}
+header {
+  border-bottom: 3px solid var(--accent);
+}
+.dobra {
+  font:
+    bold 45px/0.95 "Arial Black",
+    Arial,
+    sans-serif;
+  letter-spacing: -0.105em;
+  color: var(--accent);
+}
+.dobra span {
+  font: 19px/1 Arial;
+  vertical-align: top;
+  margin-left: 5px;
+  color: #f46334;
+}
+.order-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 18px 0;
+}
+.order-head small {
+  font-size: 13px;
+}
+.order-head h1 {
+  font-size: clamp(30px, 4.8vw, 52px);
+  letter-spacing: -0.065em;
+}
+.print-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  gap: clamp(20px, 5vw, 48px);
+}
+.proof {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background: #dfe1db;
+  min-height: 280px;
+  overflow: hidden;
+  background-image: radial-gradient(#828883 0.65px, transparent 0.8px);
+  background-size: 6px 6px;
+}
+.sheet {
+  width: 55%;
+  aspect-ratio: 297/420;
+  max-width: 180px;
+  align-self: center;
+  justify-self: center;
+  transform: rotate(-7deg);
+  background: #f1ab82;
+  border: 6px solid #faf7e6;
+  box-shadow:
+    3px 3px #a9a9a1,
+    5px 6px #eeeae1,
+    8px 9px #aaa99e,
+    10px 12px #f0ece3,
+    13px 15px 6px #27343c38;
+}
+.poster {
+  position: relative;
+  overflow: hidden;
+  padding: 9px 10px;
+  height: 100%;
+  background: #ff9c6b;
+  color: #252e81;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.poster small {
+  font: 10px/1.05 Arial;
+}
+.poster strong {
+  z-index: 1;
+  font:
+    bold clamp(29px, 4.6vw, 49px) / 0.85 Georgia,
+    serif;
+  letter-spacing: -0.085em;
+}
+.poster b {
+  z-index: 1;
+  align-self: start;
+  background: #ff9c6b;
+  padding: 2px 4px;
+  font: 11px/1.1 Arial;
+}
+.record {
+  align-self: flex-end;
+  border-radius: 50%;
+  width: 90%;
+  aspect-ratio: 1;
+  background: repeating-radial-gradient(
+    circle at center,
+    #24358d 0 3px,
+    #f2a06d 3.5px 4px
+  );
+  margin-right: -23%;
+  margin-top: -8%;
+}
+.proof[data-product="flyer"] .sheet {
+  width: 46%;
+}
+.proof[data-product="postal"] .sheet {
+  width: 43%;
+  aspect-ratio: 105/148;
+}
+.proof figcaption {
+  background: #f1f0e4;
+  border-top: 1px solid #a8aaa3;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+}
+.quote {
+  display: grid;
+  gap: 11px;
+  align-content: start;
+}
+.quote label,
+.costs {
+  font-size: 13px;
+}
+.quote input,
+.quote select {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+.costs {
+  border-top: 1px solid var(--line);
+  padding-top: 7px;
+}
+.costs div {
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.65;
+}
+.total {
+  border-top: 2px solid var(--accent);
+  padding-top: 7px;
+}
+.total output {
+  font-size: 29px;
+  font-weight: bold;
+  letter-spacing: -0.06em;
+}
+.drawer {
+  padding: 20px;
+}
+#jobs {
+  list-style: none;
+  padding: 0;
+}
+#jobs li {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+}
+#jobs li p {
+  margin-block: 4px;
+  font-size: 14px;
+}
+.job-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+@media (max-width: 620px) {
+  .print-layout {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .proof {
+    min-height: 0;
+  }
+  .sheet {
+    max-width: 84px;
+    margin: 12px;
+  }
+  .poster {
+    padding: 4px;
+  }
+  .poster strong {
+    font-size: 24px;
+  }
+  .poster small,
+  .poster b {
+    font-size: 6px;
+  }
+  .order-head {
+    margin-block: 14px;
+  }
+  .order-head h1 {
+    font-size: 28px;
+  }
+  .order-head button {
+    flex-shrink: 0;
+  }
+  .quote {
+    gap: 9px;
+  }
+}

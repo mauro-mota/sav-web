@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Raia Três — Captação de alunos</title>
+    <link rel="stylesheet" href="balcao.css" />
+    <link rel="stylesheet" href="natacao.css" />
+    <script src="balcao.js" defer></script>
+    <script src="natacao.js" defer></script>
+    <link rel="stylesheet" href="demo-navigation.css" />
+  </head>
+  <body>
+    <div class="demo-return-bar"><span>Savannah Hub</span><a href="../index.html#solucoes">Voltar às soluções</a></div>
+    <main>
+      <header>
+        <b class="raia">Raia <i>3</i></b
+        ><span>Escola de natação</span>
+      </header>
+      <div class="notice" id="notice" hidden>
+        <span role="status"></span
+        ><button type="button" hidden>Desfazer</button>
+      </div>
+      <div class="swimhead">
+        <div>
+          <small>Captação de alunos</small>
+          <h1>Da aula à matrícula</h1>
+        </div>
+        <select id="period" aria-label="Período do relatório"></select>
+      </div>
+      <div class="pool-layout">
+        <section class="pool">
+          <h2>Conversão por canal</h2>
+          <div class="lanes" id="lanes"></div>
+          <small>Matrículas ÷ aulas experimentais realizadas</small>
+        </section>
+        <section class="spend">
+          <div class="between">
+            <h2>Custo por matrícula</h2>
+            <button class="subtle" id="edit-budget">Editar verba</button>
+          </div>
+          <strong id="cpa"></strong>
+          <p id="spend-note"></p>
+        </section>
+      </div>
+      <section class="trials">
+        <div class="between">
+          <h2>Aulas experimentais</h2>
+          <button class="primary" id="new-trial">+ Agendar aula</button>
+        </div>
+        <ul id="trial-list"></ul>
+        <details id="closed">
+          <summary id="closed-label">Concluídas</summary>
+          <ul id="finished"></ul>
+        </details>
+      </section>
+      <dialog id="trial" aria-labelledby="trial-heading">
+        <form>
+          <div class="between">
+            <h2 id="trial-heading" tabindex="-1">Agendar aula</h2>
+            <button type="button" data-close aria-label="Fechar">×</button>
+          </div>
+          <label
+            >Aluno<input name="name" type="text" required maxlength="65"
+          /></label>
+          <div class="two">
+            <label>Data da aula<input name="date" type="date" required /></label
+            ><label
+              >Origem<select name="channel">
+                <option value="busca">Busca paga</option>
+                <option value="social">Redes sociais</option>
+              </select></label
+            >
+          </div>
+          <label
+            >Situação<select name="status">
+              <option value="agendada">Agendada</option>
+              <option value="presente">Compareceu</option>
+              <option value="matricula">Matriculado</option>
+              <option value="faltou">Faltou</option>
+            </select></label
+          >
+          <div class="actions">
+            <button type="button" class="danger">Excluir aula</button
+            ><button type="submit" class="primary">Salvar aula</button>
+          </div>
+        </form>
+      </dialog>
+      <dialog id="budget" aria-labelledby="budget-heading">
+        <form>
+          <div class="between">
+            <h2 id="budget-heading" tabindex="-1">Verba de mídia</h2>
+            <button type="button" data-close aria-label="Fechar">×</button>
+          </div>
+          <p id="budget-period"></p>
+          <label
+            >Busca paga (R$)<input
+              type="number"
+              name="busca"
+              min="0"
+              max="1000000"
+              step=".01"
+              required /></label
+          ><label
+            >Redes sociais (R$)<input
+              type="number"
+              name="social"
+              min="0"
+              max="1000000"
+              step=".01"
+              required
+          /></label>
+          <div class="actions">
+            <button type="submit" class="primary">Salvar verba</button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+    <footer>
+      <span>Raia Três · Demonstração com dados fictícios</span
+      ><a href="../index.html#solucoes">Voltar às soluções</a>
+    </footer>
+  </body>
+</html>

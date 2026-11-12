@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dobra — Orçamentos de impressão</title>
+    <link rel="stylesheet" href="balcao.css" />
+    <link rel="stylesheet" href="grafica.css" />
+    <script src="balcao.js" defer></script>
+    <script src="grafica.js" defer></script>
+    <link rel="stylesheet" href="demo-navigation.css" />
+  </head>
+  <body>
+    <div class="demo-return-bar"><span>Savannah Hub</span><a href="../index.html#solucoes">Voltar às soluções</a></div>
+    <main>
+      <header>
+        <b class="dobra">dobra<span>■</span></b
+        ><span>Gráfica de bairro</span>
+      </header>
+      <div class="notice" id="notice" hidden>
+        <span role="status"></span
+        ><button type="button" hidden>Desfazer</button>
+      </div>
+      <div class="order-head">
+        <div>
+          <small>Balcão de impressão</small>
+          <h1>Orçamento de tiragem</h1>
+        </div>
+        <button id="open-orders" class="outline">
+          Pedidos (<span id="count"></span>)
+        </button>
+      </div>
+      <div class="print-layout">
+        <figure class="proof">
+          <div class="sheet">
+            <div class="poster">
+              <small>Agulha Discos apresenta</small
+              ><strong>Feira<br />do vinil</strong>
+              <div class="record" aria-hidden="true"></div>
+              <b>Sáb. &amp; dom.</b>
+            </div>
+          </div>
+          <figcaption>
+            <span>Prova de impressão</span><b id="dimensions"></b>
+          </figcaption>
+        </figure>
+        <form class="quote" id="quote">
+          <label
+            >Cliente<input
+              type="text"
+              name="client"
+              required
+              maxlength="60"
+              value="Agulha Discos"
+          /></label>
+          <div class="two">
+            <label
+              >Impresso<select name="product">
+                <option value="cartaz">Cartaz A3</option>
+                <option value="flyer">Panfleto A5</option>
+                <option value="postal">Postal A6</option>
+              </select></label
+            ><label
+              >Tiragem<input
+                type="number"
+                name="qty"
+                min="1"
+                max="50000"
+                step="1"
+                required
+                value="150"
+            /></label>
+          </div>
+          <label
+            >Papel<select name="paper">
+              <option value="fosco">Couchê fosco · 170 g/m²</option>
+              <option value="offset">Offset · 120 g/m²</option>
+              <option value="cartao">Cartão · 250 g/m²</option>
+            </select></label
+          >
+          <dl class="costs">
+            <div>
+              <dt>Preparo</dt>
+              <dd id="setup"></dd>
+            </div>
+            <div>
+              <dt>Impressão e corte</dt>
+              <dd id="variable"></dd>
+            </div>
+          </dl>
+          <div class="between total">
+            <b>Total</b><output id="total"></output>
+          </div>
+          <button class="primary" type="submit" id="convert">
+            Aprovar e gerar pedido
+          </button>
+        </form>
+      </div>
+      <dialog id="orders" aria-labelledby="orders-heading">
+        <div class="drawer">
+          <div class="between">
+            <h2 id="orders-heading" tabindex="-1">Pedidos da gráfica</h2>
+            <button type="button" data-close aria-label="Fechar">×</button>
+          </div>
+          <ul id="jobs"></ul>
+        </div>
+      </dialog>
+    </main>
+    <footer>
+      <span>Dobra · Demonstração com dados fictícios</span
+      ><a href="../index.html#solucoes">Voltar às soluções</a>
+    </footer>
+  </body>
+</html>

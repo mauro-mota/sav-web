@@ -1,0 +1,59 @@
+.lightroom { --focus: #f6cc78; display: flex; flex-direction: column; gap: clamp(15px,2.3vw,36px); padding: clamp(18px,3vw,52px); background: #2a161e; color: #fcecd6; }
+.studio-head { display: flex; justify-content: space-between; align-items: end; border-bottom: 1px solid #775963; padding-bottom: 16px; }
+.studio-head h1 { font: italic 500 clamp(66px,8.4vw,132px)/.8 "Baskerville","Times New Roman",serif; letter-spacing: -.075em; }
+.studio-head i { color: #efa99f; font: 300 .69em Arial,sans-serif; }
+.studio-head p { font-size: .84rem; }
+.edit-grid { flex: 1; display: grid; grid-template-columns: minmax(0,1.67fr) minmax(235px,1fr); gap: clamp(20px,4vw,70px); align-items: center; }
+.proof-desk { padding: clamp(9px,1.5vw,25px); background: #140e11; border: 1px solid #563540; border-radius: 5px; }
+.viewfinder { position: relative; aspect-ratio: 1.4; }
+.viewfinder img { width: 100%; height: 100%; object-fit: cover; }
+.viewfinder b { pointer-events: none; position: absolute; inset: 7%; border: 1px solid #fff9e4bb; mask-image: linear-gradient(90deg,#000 16px,transparent 16px calc(100% - 16px),#000 calc(100% - 16px)),linear-gradient(#000 16px,transparent 16px calc(100% - 16px),#000 calc(100% - 16px)); }
+.contact-strip { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 1px 0; }
+.contact-strip small, .contact-strip strong { display: block; }
+.contact-strip small { color: #d7beb4; font-size: .7rem; margin-bottom: 3px; }
+.contact-strip strong { font: 500 1.22rem Georgia,serif; }
+.frames { display: flex; gap: 7px; }
+.frames button { padding: 2px; width: 57px; height: 44px; border: 1px solid transparent; border-radius: 3px; background: transparent; }
+.frames button[aria-pressed=true] { border-color: #ffe2b5; }
+.frames img { width: 100%; height: 100%; object-fit: cover; }
+.studio-account { position: relative; padding-right: clamp(0px,1.2vw,25px); }
+.aperture { color: #f5b6b5; font: 42px/1 Georgia,serif; }
+.studio-account h2 { margin: 10px 0 20px; font: italic 500 clamp(51px,5.8vw,88px)/.92 "Baskerville", Georgia,serif; letter-spacing: -.047em; }
+.studio-account p:not(.access-error) { font-size: .84rem; margin-top: 10px; color: #e5c3bd; }
+.studio-account .login { gap: 12px; }
+.studio-account input { background: #38222b; border-color: #896671; border-radius: 9px; color: #ffecd6; }
+.studio-account .enter { border-radius: 100px; background: #f4cd9a; color: #39232d; margin-top: 4px; }
+.studio-account .demo-note { color: #d4b3b6; }
+/* A prova ocupa a mesa toda. O acesso ocupa o espaço escuro reservado na composição. */
+@media (min-width: 701px) {
+  .lightroom { gap: 15px; padding: clamp(14px,2vw,36px); background: #20131a; }
+  .studio-head { align-items: center; padding-bottom: 12px; }
+  .studio-head h1 { font-size: clamp(57px,6.7vw,100px); }
+  .edit-grid { position: relative; isolation: isolate; display: grid; grid-template: 1fr / 1fr; gap: 0; }
+  .proof-desk { grid-area: 1/1; align-self: stretch; display: flex; flex-direction: column; border-radius: 0; padding: 0; border-color: #58434a; }
+  .viewfinder { flex: 1; min-height: 420px; aspect-ratio: auto; overflow: hidden; }
+  .viewfinder img { position: absolute; inset: 0; object-position: center 51%; }
+  .viewfinder::after { pointer-events: none; content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,#29111bae,#38102260 40%,transparent 70%); }
+  .viewfinder b { z-index: 1; inset: 17px; }
+  .contact-strip { padding: 6px 12px; }
+  .contact-strip > div:first-child { display: flex; align-items: baseline; gap: 12px; }
+  .studio-account { z-index: 2; grid-area: 1/1; margin: 30px 0 75px clamp(27px,4vw,75px); max-width: 295px; width: 34%; padding: 20px 22px; color: #fff4e4; background: #341a24f0; border: 1px solid #b88286; border-radius: 18px 2px 18px 2px; }
+  .aperture { float: right; font-size: 25px; }
+  .studio-account h2 { font-size: clamp(41px,4.5vw,61px); margin: 9px 0 20px; }
+  .studio-account p:not(.access-error) { margin: 0; }
+  .studio-account input { border: 0; border-bottom: 1px solid #ad808e; border-radius: 0; padding-inline: 0; background: transparent; }
+}
+@media (max-width: 700px) {
+  .lightroom { gap: 15px; }
+  .studio-head { padding-bottom: 10px; align-items: center; }
+  .studio-head h1 { font-size: clamp(49px,13vw,68px); }
+  .studio-head p { max-width: 7em; font-size: .74rem; text-align: right; }
+  .edit-grid { grid-template-columns: 1fr; gap: 18px; align-content: start; }
+  .viewfinder { aspect-ratio: 2.65; }
+  .contact-strip { padding-top: 6px; }
+  .studio-account { padding: 0; }
+  .aperture { float: right; }
+  .studio-account p:not(.access-error) { margin-top: 0; }
+  .studio-account h2 { font-size: 36px; margin: 4px 0 14px; }
+  .studio-account h2 br { display: none; }
+}
